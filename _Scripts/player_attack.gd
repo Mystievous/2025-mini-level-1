@@ -15,6 +15,6 @@ func _physics_process(delta: float) -> void:
 	
 	if horizontal_direction == 0 or horizontal_direction == 1:
 		if ray_cast_right.collide_with_bodies and Input.is_action_just_pressed("attack"):
-			pass
+			print(ray_cast_right.get_collider())
 			#			which body is the raycastright hitting 
 			

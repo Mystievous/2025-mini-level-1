@@ -60,7 +60,6 @@ animation = &"Idle"
 frame_progress = 0.31983575
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_tpd1a")
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
