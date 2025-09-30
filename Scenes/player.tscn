@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://d1w2dvnldn6v"]
+[gd_scene load_steps=11 format=3 uid="uid://d1w2dvnldn6v"]
 
 [ext_resource type="Script" uid="uid://cgi3r73aou7ol" path="res://_Scripts/player.gd" id="1_chitn"]
 [ext_resource type="Texture2D" uid="uid://sk762nmn2plf" path="res://Assets/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Character_2.png" id="1_tpd1a"]
 [ext_resource type="Script" uid="uid://5l5iixmd5pcd" path="res://_Scripts/player_attack.gd" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://dwd13f0h3uqf0" path="res://_Scripts/test_health.gd" id="4_vgqql"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_chitn"]
 atlas = ExtResource("1_tpd1a")
@@ -83,3 +84,8 @@ collision_mask = 2
 [node name="RayCastUp" type="RayCast2D" parent="."]
 target_position = Vector2(0, -15.999999)
 collision_mask = 2
+
+[node name="TestHealth" type="Node2D" parent="."]
+script = ExtResource("4_vgqql")
+
+[connection signal="hit" from="RayCastRight" to="TestHealth" method="_on_ray_cast_right_hit"]
