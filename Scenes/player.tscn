@@ -34,7 +34,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Attack",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -51,13 +51,14 @@ radius = 6.0827627
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, -36)
 scale = Vector2(5, 5)
+collision_mask = 2
 up_direction = Vector2(0, 1)
 script = ExtResource("1_chitn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4eguo")
-animation = &"Idle"
-frame_progress = 0.31983575
+animation = &"Attack"
+frame_progress = 0.5689652
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tpd1a")
@@ -66,9 +67,19 @@ shape = SubResource("CircleShape2D_tpd1a")
 position = Vector2(3.5999994, -4.7683716e-07)
 scale = Vector2(0.99999994, 0.99999994)
 target_position = Vector2(13.4, 0.20000029)
+collision_mask = 2
 script = ExtResource("3_6t5aa")
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(-2.3999996, -0.20000029)
 scale = Vector2(0.99999994, 0.99999994)
 target_position = Vector2(-13.999999, -0.19999981)
+collision_mask = 2
+
+[node name="RayCastDown" type="RayCast2D" parent="."]
+target_position = Vector2(-0.19999999, 16.199999)
+collision_mask = 2
+
+[node name="RayCastUp" type="RayCast2D" parent="."]
+target_position = Vector2(0, -15.999999)
+collision_mask = 2
