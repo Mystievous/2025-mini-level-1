@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnyqgb7hecb1v"]
+
+[ext_resource type="Script" uid="uid://bkvalvucfld2x" path="res://components/enemy_behavior.gd" id="1_5hkav"]
+
+[node name="EnemyBehavior" type="Node2D"]
+script = ExtResource("1_5hkav")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+unique_name_in_owner = true
+path_desired_distance = 5.0
+target_desired_distance = 5.0
+path_postprocessing = 1
+avoidance_enabled = true
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(0.7353129, 0, 0.23180792, 1)
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_velocity_computed"]

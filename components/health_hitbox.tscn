@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpyugc671abl0"]
+
+[ext_resource type="Script" uid="uid://dch77taty35ds" path="res://components/health_hitbox.gd" id="1_3igwn"]
+
+[node name="HealthHitbox" type="Area2D"]
+monitoring = false
+script = ExtResource("1_3igwn")
