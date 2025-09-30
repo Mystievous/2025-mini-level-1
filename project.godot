@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="2025MiniLevel1"
+run/main_scene="uid://8kv64kouxuni"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
+
+[dotnet]
+
+project/assembly_name="2025MiniLevel1"
 
 [rendering]
 

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://8kv64kouxuni"]
+
+[ext_resource type="PackedScene" uid="uid://c1tvanuevt71" path="res://scenes/spawner.tscn" id="3_oi3di"]
+
+[node name="Level" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(168, 120)
+zoom = Vector2(2.55, 2.55)
+
+[node name="Spawner" parent="." instance=ExtResource("3_oi3di")]
+position = Vector2(168, 120)
