@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://uy4q3a6obvh7"]
+
+[ext_resource type="Script" uid="uid://dyuh3cybdmtyk" path="res://dev_workspaces/artemis/test_player.gd" id="1_goxvr"]
+[ext_resource type="Texture2D" uid="uid://c8ya0sik6kghv" path="res://characters/player/assets/MC_KnightBlob.png" id="1_vaqua"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_goxvr"]
+size = Vector2(16, 16)
+
+[node name="TestPlayer" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_goxvr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_goxvr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_vaqua")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true

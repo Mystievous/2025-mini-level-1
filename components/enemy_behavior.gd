@@ -1,12 +1,12 @@
-extends Node2D
+extends NavigationAgent2D
 
-@onready var navigation_agent_2d: NavigationAgent2D = %NavigationAgent2D
+@export_custom(PROPERTY_HINT_NONE, "suffix:px") var target_distance_from_player: float = 30.0
 
-@export var speed_multiplier: int = 1
+@export_range(0, 2, 0.05, "or_greater") var speed_multiplier: float = 1.0
 
 var move_speed: 
 	get():
-		return Statics.base_move_speed * speed_multiplier
+		return Statics.base_move_speed * speed_multiplier / 2
 
 var parent: CharacterBody2D
 
@@ -25,27 +25,37 @@ func _ready() -> void:
 	else:
 		push_warning("Player node could not be found!")
 		
+	velocity_computed.connect(_on_velocity_computed)
 
-func _physics_process(delta: float) -> void:
+func _get_target_position_by_player():
 	if not player:
 		return
-	var player_position = player.global_position
-	navigation_agent_2d.target_position = player_position
 	
-	var current_agent_position = self.global_position
-	var next_path_position = navigation_agent_2d.get_next_path_position()
+	var player_position = player.global_position
+	
+	var vector_player_towards_self = Vector2.from_angle(player_position.angle_to_point(parent.global_position)).normalized() * target_distance_from_player
+	
+	return player_position + vector_player_towards_self
+
+func _physics_process(_delta: float) -> void:
+	if not player:
+		return
+		
+	target_position = _get_target_position_by_player()
+	
+	var current_agent_position = parent.global_position
+	var next_path_position = get_next_path_position()
 	var new_velocity = current_agent_position.direction_to(next_path_position) * move_speed
 	
-	if navigation_agent_2d.is_navigation_finished():
+	if is_navigation_finished():
 		return
 	
-	if navigation_agent_2d.avoidance_enabled:
-		navigation_agent_2d.velocity = new_velocity
+	if avoidance_enabled:
+		velocity = new_velocity
 	else:
 		_on_velocity_computed(new_velocity)
 		
 	parent.move_and_slide()
-
 
 func _on_velocity_computed(safe_velocity: Vector2) -> void:
 	if parent:

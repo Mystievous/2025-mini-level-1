@@ -1,19 +1,31 @@
-[gd_scene load_steps=4 format=4 uid="uid://bxe1nty1rbnpo"]
+[gd_scene load_steps=5 format=4 uid="uid://bxe1nty1rbnpo"]
 
 [ext_resource type="PackedScene" uid="uid://drebcau7s58qn" path="res://characters/enemies/jester.tscn" id="1_76ape"]
 [ext_resource type="TileSet" uid="uid://8b7ksx1jxhyi" path="res://assets/tilemap/tileset.tres" id="1_nm8p4"]
-[ext_resource type="Texture2D" uid="uid://c1ij68f8hfcqk" path="res://icon.svg" id="3_qc448"]
+[ext_resource type="PackedScene" uid="uid://uy4q3a6obvh7" path="res://dev_workspaces/artemis/test_player.tscn" id="3_qc448"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_qc448"]
+vertices = PackedVector2Array(502, 438, 10, 438, 10, 10, 502, 10)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 
 [node name="EnemyTestScene" type="Node2D"]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_qc448")
+
+[node name="Ground" type="TileMapLayer" parent="NavigationRegion2D"]
 tile_map_data = PackedByteArray("AAAAAAAAAQACAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAMAAQABAAAAAAAAAAQAAQABAAAAAAAAAAUAAQABAAAAAAAAAAYAAQACAAAAAAABAAAAAQABAAAAAAABAAEAAQACAAAAAAABAAIAAQACAAAAAAABAAMAAQACAAAAAAABAAQAAQAAAAAAAAABAAUAAQABAAAAAAABAAYAAQAAAAAAAAACAAAAAQACAAAAAAACAAEAAQAAAAAAAAACAAIAAQAAAAAAAAACAAMAAQAAAAAAAAACAAQAAQABAAAAAAACAAUAAQACAAAAAAACAAYAAQABAAAAAAADAAAAAQACAAAAAAADAAEAAQAAAAAAAAADAAIAAQACAAAAAAADAAMAAQACAAAAAAADAAQAAQABAAAAAAADAAUAAQACAAAAAAADAAYAAQABAAAAAAAEAAAAAQACAAAAAAAEAAEAAQABAAAAAAAEAAIAAQAAAAAAAAAEAAMAAQACAAAAAAAEAAQAAQAAAAAAAAAEAAUAAQABAAAAAAAEAAYAAQABAAAAAAAFAAAAAQAAAAAAAAAFAAEAAQAAAAAAAAAFAAIAAQABAAAAAAAFAAMAAQAAAAAAAAAFAAQAAQAAAAAAAAAFAAUAAQAAAAAAAAAFAAYAAQABAAAAAAAGAAAAAQABAAAAAAAGAAEAAQAAAAAAAAAGAAIAAQACAAAAAAAGAAMAAQACAAAAAAAGAAQAAQACAAAAAAAGAAUAAQAAAAAAAAAGAAYAAQAAAAAAAAAHAAAAAQAAAAAAAAAHAAEAAQACAAAAAAAHAAIAAQACAAAAAAAHAAMAAQABAAAAAAAHAAQAAQACAAAAAAAHAAUAAQACAAAAAAAHAAYAAQABAAAAAAA=")
 tile_set = ExtResource("1_nm8p4")
+navigation_enabled = false
 
 [node name="Jester" parent="." instance=ExtResource("1_76ape")]
 position = Vector2(207, 157)
+collision_mask = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="." groups=["Player"]]
-position = Vector2(410, 355)
-scale = Vector2(0.28125, 0.28125)
-texture = ExtResource("3_qc448")
+[node name="TestPlayer" parent="." instance=ExtResource("3_qc448")]
+position = Vector2(76, 101)
+collision_layer = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(2.5, 2.5)
