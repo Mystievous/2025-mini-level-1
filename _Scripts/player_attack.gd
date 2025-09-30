@@ -45,5 +45,5 @@ func handle_up_attack(direction):
 	if direction == 0 or direction == 1:
 		if Input.is_action_just_pressed("attack"):
 			#animated_sprite_2d.play("Attack")
-			if ray_cast_down.is_colliding(): 
+			if ray_cast_up.is_colliding(): 
 				print("hit with up attack")
