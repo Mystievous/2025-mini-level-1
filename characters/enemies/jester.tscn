@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://drebcau7s58qn"]
 
 [ext_resource type="Texture2D" uid="uid://c8ya0sik6kghv" path="res://characters/player/assets/MC_KnightBlob.png" id="1_wtjtx"]
-[ext_resource type="PackedScene" uid="uid://bpyugc671abl0" path="res://components/health_hitbox.tscn" id="2_rmiuj"]
+[ext_resource type="PackedScene" uid="uid://bpyugc671abl0" path="res://components/hitbox.tscn" id="2_rmiuj"]
 [ext_resource type="PackedScene" uid="uid://dnyqgb7hecb1v" path="res://components/enemy_behavior.tscn" id="3_kyeje"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g64rt"]
@@ -14,18 +14,18 @@ size = Vector2(26, 27)
 collision_layer = 4
 collision_mask = 5
 
-[node name="CollisionBox" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_g64rt")
 
-[node name="HealthHitbox" parent="." instance=ExtResource("2_rmiuj")]
+[node name="Hitbox" parent="." instance=ExtResource("2_rmiuj")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -9.5)
 shape = SubResource("RectangleShape2D_rmiuj")
 debug_color = Color(0.65585005, 0.25187263, 0.5896923, 0.09411765)
 
-[node name="McKnightBlob" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.93314946, 0, 0.026759928, 1)
 position = Vector2(0, -8)
 texture = ExtResource("1_wtjtx")
