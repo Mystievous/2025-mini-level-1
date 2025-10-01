@@ -12,22 +12,21 @@ size = Vector2(26, 27)
 
 [node name="Jester" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_g64rt")
 
 [node name="Hitbox" parent="." instance=ExtResource("2_rmiuj")]
+use_color = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, -9.5)
+position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_rmiuj")
 debug_color = Color(0.65585005, 0.25187263, 0.5896923, 0.09411765)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.93314946, 0, 0.026759928, 1)
-position = Vector2(0, -8)
 texture = ExtResource("1_wtjtx")
 
 [node name="EnemyBehavior" parent="." instance=ExtResource("3_kyeje")]
+speed_multiplier = 0.6

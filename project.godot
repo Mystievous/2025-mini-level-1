@@ -20,7 +20,6 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=2
 window/stretch/mode="canvas_items"
-window/stretch/scale_mode="integer"
 
 [global_group]
 
@@ -31,6 +30,9 @@ Player=""
 2d_physics/layer_1="Environment"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemies"
+avoidance/layer_1="Jesters"
+avoidance/layer_2="Trees"
+avoidance/layer_3="Moths"
 
 [rendering]
 

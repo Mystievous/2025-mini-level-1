@@ -6,7 +6,6 @@
 path_desired_distance = 5.0
 target_desired_distance = 5.0
 avoidance_enabled = true
-debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.8798718, 0.041831262, 0.40848464, 1)
 script = ExtResource("1_5hkav")

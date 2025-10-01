@@ -1,6 +1,9 @@
 extends NavigationAgent2D
 
+## The distance that this enemy will try to stay at from the player.
 @export_custom(PROPERTY_HINT_NONE, "suffix:px") var target_distance_from_player: float = 30.0
+
+## The speed (multiplied by `Statics.base_move_speed / 2`) that the enemy will move.
 @export_range(0, 2, 0.05, "or_greater") var speed_multiplier: float = 1.0
 
 var move_speed: 

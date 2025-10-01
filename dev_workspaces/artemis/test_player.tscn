@@ -1,21 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://uy4q3a6obvh7"]
+[gd_scene load_steps=6 format=3 uid="uid://uy4q3a6obvh7"]
 
 [ext_resource type="Script" uid="uid://dyuh3cybdmtyk" path="res://dev_workspaces/artemis/test_player.gd" id="1_goxvr"]
 [ext_resource type="Texture2D" uid="uid://c8ya0sik6kghv" path="res://characters/player/assets/MC_KnightBlob.png" id="1_vaqua"]
+[ext_resource type="PackedScene" uid="uid://bpyugc671abl0" path="res://components/hitbox.tscn" id="3_0j5v1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_goxvr"]
 size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0j5v1"]
+size = Vector2(20, 21)
 
 [node name="TestPlayer" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_goxvr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_goxvr")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -8)
-texture = ExtResource("1_vaqua")
+[node name="Hitbox" parent="." instance=ExtResource("3_0j5v1")]
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-avoidance_enabled = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_0j5v1")
+debug_color = Color(0.654902, 0.2509804, 0.5882353, 0.09411765)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vaqua")

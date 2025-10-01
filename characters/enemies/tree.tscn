@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://dla32lb7q5d2l"]
+
+[ext_resource type="PackedScene" uid="uid://bpyugc671abl0" path="res://components/hitbox.tscn" id="1_3k34j"]
+[ext_resource type="Texture2D" uid="uid://c8ya0sik6kghv" path="res://characters/player/assets/MC_KnightBlob.png" id="2_6xidp"]
+[ext_resource type="PackedScene" uid="uid://dnyqgb7hecb1v" path="res://components/enemy_behavior.tscn" id="3_pllno"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g64rt"]
+size = Vector2(24, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rmiuj"]
+size = Vector2(38, 39)
+
+[node name="Tree" type="CharacterBody2D"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_g64rt")
+
+[node name="Hitbox" parent="." instance=ExtResource("1_3k34j")]
+use_color = true
+color = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_rmiuj")
+debug_color = Color(0.65585005, 0.25187263, 0.5896923, 0.09411765)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.18317756, 0.59655994, 0, 1)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_6xidp")
+
+[node name="EnemyBehavior" parent="." instance=ExtResource("3_pllno")]
+avoidance_layers = 2
+avoidance_mask = 2
+target_distance_from_player = 50.0
+speed_multiplier = 0.3
