@@ -6,6 +6,7 @@ extends Node2D
 @onready var ray_cast_up: RayCast2D = $RayCastUp
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../AnimatedSprite2D"
+@onready var animation_timer: Timer = $"../AnimationTimer"
 
 signal hit
 
@@ -21,10 +22,19 @@ func _physics_process(delta: float) -> void:
 	handle_down_attack(vertical_direction)
 	handle_up_attack(vertical_direction)
 	
+
+#i really need to refactor these to just one 
+#handle attack, with parameters 	
+
 func handle_right_attack(direction):
 	if direction == 0 or direction == 1:
 		if Input.is_action_just_pressed("attack"):
 			#animated_sprite_2d.play("Attack")
+			#animated_sprite_2d
+			print("animation played")
+			animated_sprite_2d.stop()
+			animated_sprite_2d.play("Attack")
+			animation_timer.start()
 			if ray_cast_right.is_colliding(): 
 				hit.emit()
 				print("hit with right attack")
@@ -52,3 +62,7 @@ func handle_up_attack(direction):
 			if ray_cast_up.is_colliding(): 
 				print("hit with up attack")
 				hit.emit()
+
+
+func _on_animation_timer_timeout() -> void:
+	animated_sprite_2d.stop()

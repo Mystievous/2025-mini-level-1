@@ -35,7 +35,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Attack",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -57,9 +57,10 @@ up_direction = Vector2(0, 1)
 script = ExtResource("1_chitn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.19999999, 0)
 sprite_frames = SubResource("SpriteFrames_4eguo")
 animation = &"Attack"
-frame_progress = 0.5689652
+frame_progress = 0.6268977
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tpd1a")
@@ -69,4 +70,8 @@ script = ExtResource("4_vgqql")
 
 [node name="playerAttack" parent="." instance=ExtResource("4_fkybt")]
 
+[node name="AnimationTimer" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="hit" from="playerAttack" to="TestHealth" method="_on_player_attack_hit"]
+[connection signal="timeout" from="AnimationTimer" to="playerAttack" method="_on_animation_timer_timeout"]
