@@ -42,7 +42,6 @@ func handle_right_attack(direction):
 func handle_left_attack(direction):
 	if direction == 0 or direction == -1:
 		if Input.is_action_just_pressed("attack"):
-			#animated_sprite_2d.play("Attack")
 			if ray_cast_left.is_colliding(): 
 				print("hit with left attack")
 				hit.emit()
