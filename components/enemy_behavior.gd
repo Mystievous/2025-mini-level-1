@@ -1,10 +1,13 @@
 extends NavigationAgent2D
+class_name EnemyBehavior
 
 ## The distance that this enemy will try to stay at from the player.
 @export_custom(PROPERTY_HINT_NONE, "suffix:px") var target_distance_from_player: float = 30.0
 
 ## The speed (multiplied by `Statics.base_move_speed / 2`) that the enemy will move.
 @export_range(0, 2, 0.05, "or_greater") var speed_multiplier: float = 1.0
+
+var disable_movement: bool = false
 
 var move_speed: 
 	get():
@@ -40,6 +43,10 @@ func _get_target_position_by_player():
 	return player_position + vector_player_towards_self
 
 func _physics_process(_delta: float) -> void:
+	if disable_movement:
+		velocity = Vector2()
+		parent.move_and_slide()
+		return
 	if not player:
 		return
 		

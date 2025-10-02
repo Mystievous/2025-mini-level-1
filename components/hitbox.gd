@@ -11,6 +11,6 @@ class_name Hitbox
 signal killed
 
 func hurt(attack_color: Statics.ColorType):
-	if use_color and attack_color == color: 
+	if not use_color or attack_color == color: 
 		get_parent().queue_free()
 		killed.emit()

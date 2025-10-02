@@ -1,14 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://dla32lb7q5d2l"]
+[gd_scene load_steps=8 format=3 uid="uid://dla32lb7q5d2l"]
 
 [ext_resource type="PackedScene" uid="uid://bpyugc671abl0" path="res://components/hitbox.tscn" id="1_3k34j"]
 [ext_resource type="Texture2D" uid="uid://c8ya0sik6kghv" path="res://characters/player/assets/MC_KnightBlob.png" id="2_6xidp"]
 [ext_resource type="PackedScene" uid="uid://dnyqgb7hecb1v" path="res://components/enemy_behavior.tscn" id="3_pllno"]
+[ext_resource type="PackedScene" uid="uid://d3ob6s2xdv652" path="res://components/enemy_attack.tscn" id="4_6xidp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g64rt"]
 size = Vector2(24, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rmiuj"]
 size = Vector2(38, 39)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pllno"]
+radius = 74.06078
 
 [node name="Tree" type="CharacterBody2D"]
 collision_layer = 4
@@ -35,3 +39,11 @@ avoidance_layers = 2
 avoidance_mask = 2
 target_distance_from_player = 50.0
 speed_multiplier = 0.3
+
+[node name="EnemyAttack" parent="." node_paths=PackedStringArray("enemySprite", "enemyBehavior") instance=ExtResource("4_6xidp")]
+enemySprite = NodePath("../Sprite2D")
+enemyBehavior = NodePath("../EnemyBehavior")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyAttack"]
+shape = SubResource("CircleShape2D_pllno")
+debug_color = Color(0.9098039, 0.34509805, 0.3529412, 0.101960786)

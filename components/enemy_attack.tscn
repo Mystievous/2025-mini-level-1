@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3ob6s2xdv652"]
+
+[ext_resource type="Script" uid="uid://jnruwy6puok0" path="res://characters/enemies/enemy_attack.gd" id="1_43ivf"]
+
+[node name="EnemyAttack" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_43ivf")
