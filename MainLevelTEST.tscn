@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://b546dbo446huj"]
+
+[ext_resource type="PackedScene" uid="uid://lhtgdtq5hwb2" path="res://orbs/Orb_Blue.tscn" id="1_wi1fv"]
+[ext_resource type="PackedScene" uid="uid://dewwm32h8bgrd" path="res://orbs/orb_Red.tscn" id="2_2inn8"]
+[ext_resource type="PackedScene" uid="uid://ddpmutrmfxi3u" path="res://orbs/Orb_Green.tscn" id="3_311mb"]
+
+[node name="MainLevelTEST" type="Node2D"]
+
+[node name="OrbBlue" parent="." instance=ExtResource("1_wi1fv")]
+
+[node name="OrbRed" parent="." instance=ExtResource("2_2inn8")]
+
+[node name="OrbGreen" parent="." instance=ExtResource("3_311mb")]
