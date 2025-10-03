@@ -778,7 +778,8 @@ animation_tree = NodePath("AnimationTree")
 position = Vector2(989.6, 651.6)
 scale = Vector2(2.1, 2.1)
 sprite_frames = SubResource("SpriteFrames_o0jqr")
-animation = &"walk_right_red"
+animation = &"walk_down_blue"
+frame_progress = 0.23995486
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false

@@ -1,11 +1,22 @@
 class_name Playermove
 extends CharacterBody2D
 
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @export var speed : float = 250 #player speed
 @export var animation_tree: AnimationTree
 
+func _process(_delta):
+	if Input.is_action_pressed("ui_right"):
+		animated_sprite_2d.play("walk_right_blue")
+	elif Input.is_action_pressed("ui_left"):
+			animated_sprite_2d.play("walk_left_blue")
+	elif Input.is_action_pressed("ui_down"):
+		animated_sprite_2d.play("walk_down_blue")
+	else:
+		animated_sprite_2d.stop()
 var input : Vector2
 var playback : AnimationNodeStateMachinePlayback
+
 
 func _ready():
 	playback = animation_tree["parameters/playback"]
