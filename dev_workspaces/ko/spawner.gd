@@ -1,4 +1,5 @@
 extends Marker2D
+class_name WaveSpawner
 #preloads the enemies to be able to insantiate them from the spawner
 var enemySceneRed   := preload("uid://drebcau7s58qn")
 var enemySceneGreen := preload("uid://dla32lb7q5d2l")
@@ -13,6 +14,9 @@ enum SpawnerTypeEnum {
 	 GREEN, ##2, spawns green
 	  BLUE  ##3, spawns blue
 }
+
+#signals
+signal wave_started(wave_num: int)
 
 ##Determines what monsters will spawn from the Marker2D spawner. Default: Random
 @export var spawnerType: SpawnerTypeEnum
@@ -29,7 +33,7 @@ enum SpawnerTypeEnum {
 #keeps track of the current wave
 var currentWave: int = 0
 #keeps track of how many enemies are left in the wave
-var enemiesLeftInWave: int = amountOfEnemiesInWave
+var enemiesLeftInWave: int = amountOfEnemiesInWave - self.get_child_count() - 1
 
 func _ready() -> void:
 	if showDebugVisual:
@@ -42,6 +46,7 @@ func _process(_delta: float) -> void:
 	if (enemiesLeftInWave <= self.get_child_count()):
 		enemiesLeftInWave = self.get_child_count()-1
 		#print("Enemies Left in wave: ", enemiesLeftInWave)
+	enemiesLeftInWave = 04
 		
 	#when spacebar is pressed: deletes all enemies in the wave so the next one can appear
 	if showDebugVisual:
@@ -57,6 +62,7 @@ func waves() -> void:
 			for enemiesToSpawn in amountOfEnemiesInWave:
 				spawnEnemy()
 			currentWave += 1
+			emit_signal("wave_started", currentWave)
 			if showDebugVisual:
 				print("curent wave is ",  currentWave)
 				print(self.get_children())
@@ -87,3 +93,12 @@ func spawnEnemy() -> void:
 	var xOffset: int = randi_range(spawnRadiusMinimum, spawnRadiusSize) * random_positive_or_negative()
 	var yOffset: int = randi_range(spawnRadiusMinimum, spawnRadiusSize) * random_positive_or_negative()
 	enemyInstance.position = Vector2i(xOffset, yOffset)
+
+func get_wave_progress() -> float:
+	if amountOfEnemiesInWave > 0:
+		return float(amountOfEnemiesInWave - enemiesLeftInWave) / float(amountOfEnemiesInWave)
+	return 0.0
+
+func is_level_cleared() -> bool:
+	# Level is cleared if last wave is done and all enemies are gone
+	return currentWave >= numberOfWaves and enemiesLeftInWave <= 0

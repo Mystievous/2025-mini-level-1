@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dam8iokwg1idt"]
+[gd_scene load_steps=4 format=3 uid="uid://dam8iokwg1idt"]
 
 [ext_resource type="Texture2D" uid="uid://dmiviyrex5f4m" path="res://assets/sprites/orb-green.png" id="1_576wq"]
+[ext_resource type="Script" uid="uid://bce70c2pus4e0" path="res://assets/sprites/orb_green.gd" id="1_f5yd0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4snb4"]
 radius = 1.0
 
 [node name="Node2D" type="Area2D"]
+script = ExtResource("1_f5yd0")
 
 [node name="OrbGreen" type="Sprite2D" parent="."]
 position = Vector2(1.1920929e-07, 0)

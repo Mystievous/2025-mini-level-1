@@ -1,18 +1,22 @@
-[gd_scene load_steps=8 format=4 uid="uid://bx7cdftbyvu4i"]
+[gd_scene load_steps=12 format=4 uid="uid://bx7cdftbyvu4i"]
 
+[ext_resource type="Script" uid="uid://d4ajjmy48fmc4" path="res://scenes/Level/level_1.gd" id="1_ox3f8"]
 [ext_resource type="TileSet" uid="uid://8b7ksx1jxhyi" path="res://assets/tilemap/tileset.tres" id="1_r064k"]
 [ext_resource type="TileSet" uid="uid://f7nmn38ny57v" path="res://assets/tilemap/props_tileset.tres" id="2_6rpg3"]
 [ext_resource type="PackedScene" uid="uid://uy4q3a6obvh7" path="res://dev_workspaces/artemis/test_player.tscn" id="3_v1dnf"]
 [ext_resource type="PackedScene" uid="uid://dog35jtjm8ivw" path="res://characters/player/player_camera.tscn" id="4_6jb0o"]
 [ext_resource type="PackedScene" uid="uid://gwmj2iw3ilv8" path="res://dev_workspaces/ko/spawner.tscn" id="5_odm23"]
 [ext_resource type="PackedScene" uid="uid://b6k840sl3v567" path="res://scenes/UI/UI_Overlay.tscn" id="6_6rpg3"]
+[ext_resource type="PackedScene" uid="uid://bvuefd7otpgus" path="res://assets/sprites/Orb_Blue.tscn" id="8_inmyx"]
+[ext_resource type="PackedScene" uid="uid://dovvq5gony2ps" path="res://assets/sprites/Orb_Red.tscn" id="9_2xbxp"]
+[ext_resource type="PackedScene" uid="uid://dam8iokwg1idt" path="res://assets/sprites/Orb_Green.tscn" id="10_k3atr"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qc448"]
 vertices = PackedVector2Array(502, 438, 10, 438, 10, 10, 502, 10)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 
-[node name="EnemyTestScene" type="Node2D"]
-y_sort_enabled = true
+[node name="EnemyTestScene2" type="Node2D"]
+script = ExtResource("1_ox3f8")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_qc448")
@@ -27,6 +31,7 @@ tile_map_data = PackedByteArray("AAAHAAAAAQAAAAAAAAANAAUAAQABAAAAAAACAAoAAQACAAA
 tile_set = ExtResource("2_6rpg3")
 
 [node name="TestPlayer" parent="." instance=ExtResource("3_v1dnf")]
+z_index = 10
 position = Vector2(247, 204)
 collision_layer = 2
 
@@ -42,3 +47,18 @@ showDebugVisual = true
 
 [node name="UiOverlay" parent="." instance=ExtResource("6_6rpg3")]
 follow_viewport_enabled = false
+
+[node name="OrbBlue" parent="." instance=ExtResource("8_inmyx")]
+z_index = 50
+position = Vector2(80, 384)
+scale = Vector2(1.5, 1.5)
+
+[node name="OrbRed" parent="." instance=ExtResource("9_2xbxp")]
+z_index = 50
+position = Vector2(96, -40)
+scale = Vector2(0.3, 0.3)
+
+[node name="OrbGreen" parent="." instance=ExtResource("10_k3atr")]
+z_index = 50
+position = Vector2(440, 384)
+scale = Vector2(1.5, 1.5)

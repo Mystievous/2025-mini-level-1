@@ -50,21 +50,21 @@ z_index = 50
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -120.0
-offset_top = 22.0
-offset_right = 120.0
-offset_bottom = 70.0
+offset_left = -160.0
+offset_top = 16.0
+offset_right = 168.0
+offset_bottom = 64.0
 grow_horizontal = 2
 
 [node name="ProgressLabel" type="RichTextLabel" parent="."]
 z_index = 100
-offset_left = 848.0
-offset_top = 35.0
-offset_right = 1099.0
-offset_bottom = 75.0
+offset_left = 808.0
+offset_top = 24.0
+offset_right = 1168.0
+offset_bottom = 64.0
 theme_override_fonts/normal_font = ExtResource("1_il18o")
 bbcode_enabled = true
-text = "[font_size=15]Progress:[/font_size]"
+text = "[font_size=15]Progress: 0%[/font_size]"
 
 [node name="W" type="Sprite2D" parent="."]
 z_index = 100
@@ -155,3 +155,14 @@ offset_bottom = 897.0
 theme_override_fonts/normal_font = ExtResource("1_il18o")
 bbcode_enabled = true
 text = "[font_size=12][center]Attack![/center][/font_size]"
+
+[node name="WaveLabel" type="RichTextLabel" parent="."]
+offset_left = 720.0
+offset_top = 75.0
+offset_right = 1200.0
+offset_bottom = 144.0
+theme_override_fonts/normal_font = ExtResource("1_il18o")
+bbcode_enabled = true
+text = "[font_size=25][center]Wave 1[/center][/font_size]"
+scroll_active = false
+scroll_following_visible_characters = true
