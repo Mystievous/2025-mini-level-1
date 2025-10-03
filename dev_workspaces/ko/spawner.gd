@@ -16,6 +16,7 @@ enum SpawnerTypeEnum {
 
 ##Determines what monsters will spawn from the Marker2D spawner. Default: Random
 @export var spawnerType: SpawnerTypeEnum
+@export var spawnRadiusMinimum: int = 30
 ##Determines how far enemies can spawn from the Marker2D spawner. Default: 100
 @export var spawnRadiusSize: int = 100 
 ##Sets how many times enemies will reappear after they are all defeated. Default: 3
@@ -54,6 +55,9 @@ func waves() -> void:
 				print(self.get_children())
 				print()
 
+func random_positive_or_negative():
+		return (randi_range(0, 1) * 2 - 1)
+
 func spawnEnemy() -> void:
 	var enemyInstance
 	var spawnerTypeSelection: int
@@ -73,6 +77,6 @@ func spawnEnemy() -> void:
 	add_child(enemyInstance) #adds the new enemy to the scene	
 
 	#modifies the enemies position to a random range determined by spawnRadiusSize
-	var xOffset: int = randi_range(-spawnRadiusSize, spawnRadiusSize)
-	var yOffset: int = randi_range(-spawnRadiusSize, spawnRadiusSize)
+	var xOffset: int = randi_range(spawnRadiusMinimum, spawnRadiusSize) * random_positive_or_negative()
+	var yOffset: int = randi_range(spawnRadiusMinimum, spawnRadiusSize) * random_positive_or_negative()
 	enemyInstance.position = Vector2i(xOffset, yOffset)

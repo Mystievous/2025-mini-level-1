@@ -1,11 +1,12 @@
 extends CanvasLayer
+class_name PlayerUI
 
 @onready var color_label = $CharacterColor
 @onready var controlPanelBG = $ControlsBackground
 @onready var ProgBackground = $ProgressBackground
 
 
-func color_update_ui(new_color: int) -> void:
+func color_update_ui(new_color: Statics.ColorType) -> void:
 	match new_color:
 		Statics.ColorType.RED:
 			controlPanelBG.modulate = Color(256, 0.0, 0.0) # red
