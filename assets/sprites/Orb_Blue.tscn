@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvuefd7otpgus"]
+
+[ext_resource type="Texture2D" uid="uid://d1ks5tdhv1v7f" path="res://assets/sprites/orb-blue.png" id="1_86wgv"]
+[ext_resource type="Script" uid="uid://dxvdhi1lsfm8o" path="res://assets/sprites/orb_blue.gd" id="1_i3p1v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_86wgv"]
+
+[node name="OrbBlue" type="Area2D"]
+script = ExtResource("1_i3p1v")
+
+[node name="OrbBlue_Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_86wgv")
+
+[node name="OrbBlue_CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_86wgv")

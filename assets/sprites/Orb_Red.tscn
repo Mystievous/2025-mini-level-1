@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dovvq5gony2ps"]
+
+[ext_resource type="Texture2D" uid="uid://chcbs8s5202xv" path="res://assets/sprites/orb-red.png" id="1_1b3ck"]
+[ext_resource type="Script" uid="uid://dy3hbgojfrp4r" path="res://assets/sprites/orb_red.gd" id="1_1lpcy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1b3ck"]
+
+[node name="OrbRed" type="Area2D"]
+script = ExtResource("1_1lpcy")
+
+[node name="OrbRed_Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(500, 300)
+scale = Vector2(5, 5)
+texture = ExtResource("1_1b3ck")
+
+[node name="OrbRed_CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(500, 300)
+scale = Vector2(5, 5)
+shape = SubResource("CircleShape2D_1b3ck")
+
+[node name="Timer" type="Timer" parent="."]

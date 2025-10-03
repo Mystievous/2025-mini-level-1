@@ -1,0 +1,126 @@
+[gd_scene load_steps=16 format=3 uid="uid://mibci3wgk2bn"]
+
+[ext_resource type="Texture2D" uid="uid://dc8uv8vl60rbx" path="res://assets/tilemap/ML1_Floors.png" id="1_s6bji"]
+[ext_resource type="Texture2D" uid="uid://djm5wg47if1t1" path="res://assets/tilemap/ML1_Walls.png" id="2_nyupo"]
+[ext_resource type="PackedScene" uid="uid://dovvq5gony2ps" path="res://assets/sprites/Orb_Red.tscn" id="3_askic"]
+[ext_resource type="Texture2D" uid="uid://c25ijc04dv3ne" path="res://characters/player/assets/MC_Red.png" id="3_ilsv3"]
+[ext_resource type="Script" uid="uid://bjha801502n3v" path="res://dev_workspaces/bernard/UI_Overlay/character_body_2d.gd" id="3_rmex0"]
+[ext_resource type="PackedScene" uid="uid://dam8iokwg1idt" path="res://assets/sprites/Orb_Green.tscn" id="3_s6bji"]
+[ext_resource type="PackedScene" uid="uid://bvuefd7otpgus" path="res://assets/sprites/Orb_Blue.tscn" id="4_bn1e8"]
+[ext_resource type="Script" uid="uid://bce70c2pus4e0" path="res://assets/sprites/orb_green.gd" id="4_nyupo"]
+[ext_resource type="PackedScene" uid="uid://b6k840sl3v567" path="res://scenes/UI/UI_Overlay.tscn" id="6_p4vx3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmex0"]
+atlas = ExtResource("3_ilsv3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p38dd"]
+atlas = ExtResource("3_ilsv3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4vx3"]
+atlas = ExtResource("3_ilsv3")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_askic"]
+atlas = ExtResource("3_ilsv3")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bn1e8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmex0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p38dd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4vx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_askic")
+}],
+"loop": true,
+"name": &"walkDown",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_askic"]
+size = Vector2(31, 30)
+
+[node name="ExampleLevel" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Area2D"]
+offset_top = -499.0
+offset_right = 500.0
+offset_bottom = 1.0
+pivot_offset = Vector2(2, 0)
+texture = ExtResource("1_s6bji")
+expand_mode = 1
+stretch_mode = 1
+flip_h = true
+
+[node name="TextureRect2" type="TextureRect" parent="Area2D"]
+offset_left = -129.0
+offset_top = -627.0
+offset_right = 373.6667
+offset_bottom = -541.6666
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_nyupo")
+stretch_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="Area2D"]
+offset_left = -129.0
+offset_right = 204.33301
+offset_bottom = 85.0
+rotation = 4.712389
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_nyupo")
+stretch_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="Area2D"]
+offset_left = 626.0
+offset_top = -499.0
+offset_right = 957.732
+offset_bottom = -414.0
+rotation = 1.5707964
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_nyupo")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="OrbGreen" parent="." instance=ExtResource("3_s6bji")]
+position = Vector2(259, -348)
+scale = Vector2(1.6, 1.6)
+script = ExtResource("4_nyupo")
+
+[node name="OrbRed" parent="." instance=ExtResource("3_askic")]
+position = Vector2(188, -263)
+scale = Vector2(0.3, 0.3)
+
+[node name="OrbBlue" parent="." instance=ExtResource("4_bn1e8")]
+position = Vector2(141, -165.00002)
+scale = Vector2(1.6, 1.6)
+
+[node name="UiOverlay" parent="." instance=ExtResource("6_p4vx3")]
+follow_viewport_enabled = false
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("3_rmex0")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(259, -258)
+scale = Vector2(1.5, 1.459)
+sprite_frames = SubResource("SpriteFrames_bn1e8")
+animation = &"walkDown"
+
+[node name="CharacterCamera" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(259, -258)
+zoom = Vector2(4, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(259, -258)
+shape = SubResource("RectangleShape2D_askic")

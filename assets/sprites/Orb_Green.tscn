@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dam8iokwg1idt"]
+
+[ext_resource type="Texture2D" uid="uid://dmiviyrex5f4m" path="res://assets/sprites/orb-green.png" id="1_576wq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4snb4"]
+radius = 1.0
+
+[node name="Node2D" type="Area2D"]
+
+[node name="OrbGreen" type="Sprite2D" parent="."]
+position = Vector2(1.1920929e-07, 0)
+texture = ExtResource("1_576wq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4snb4")

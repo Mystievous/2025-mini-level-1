@@ -1,0 +1,157 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6k840sl3v567"]
+
+[ext_resource type="Script" uid="uid://b0ru752gdeoa5" path="res://scenes/UI/ui_overlay.gd" id="1_fokmp"]
+[ext_resource type="FontFile" uid="uid://jttr5e0x0jj" path="res://assets/Fonts/Righteous.ttf" id="1_il18o"]
+[ext_resource type="Texture2D" uid="uid://cmcudggefsjum" path="res://assets/Fonts/WoodenControls.png" id="3_qvt8h"]
+[ext_resource type="Texture2D" uid="uid://bcshvtuet807u" path="res://assets/Fonts/arrow.png" id="4_4ugcc"]
+
+[node name="UiOverlay" type="CanvasLayer"]
+layer = 100
+follow_viewport_enabled = true
+script = ExtResource("1_fokmp")
+
+[node name="CharacterColor" type="RichTextLabel" parent="."]
+z_index = 100
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = 72.0
+offset_right = 103.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("1_il18o")
+bbcode_enabled = true
+
+[node name="ControlsBackground" type="Panel" parent="."]
+z_index = 50
+offset_left = 23.0
+offset_top = 788.0
+offset_right = 441.0
+offset_bottom = 1051.0
+
+[node name="ControlsInfo" type="RichTextLabel" parent="."]
+z_index = 100
+offset_left = 54.0
+offset_top = 800.0
+offset_right = 419.0
+offset_bottom = 834.0
+theme_override_fonts/normal_font = ExtResource("1_il18o")
+bbcode_enabled = true
+text = "[font_size=15][center]Character Controls[/center]
+[/font_size]"
+
+[node name="ProgressBackground" type="Panel" parent="."]
+z_index = 50
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_top = 22.0
+offset_right = 120.0
+offset_bottom = 70.0
+grow_horizontal = 2
+
+[node name="ProgressLabel" type="RichTextLabel" parent="."]
+z_index = 100
+offset_left = 848.0
+offset_top = 35.0
+offset_right = 1099.0
+offset_bottom = 75.0
+theme_override_fonts/normal_font = ExtResource("1_il18o")
+bbcode_enabled = true
+text = "[font_size=15]Progress:[/font_size]"
+
+[node name="W" type="Sprite2D" parent="."]
+z_index = 100
+position = Vector2(152, 904.00006)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_qvt8h")
+region_enabled = true
+region_rect = Rect2(2.5209637, 40.0976, 18.915464, 19.488659)
+
+[node name="A" type="Sprite2D" parent="."]
+z_index = 100
+position = Vector2(104, 952.00006)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_qvt8h")
+region_enabled = true
+region_rect = Rect2(22.436378, 41.183502, 18.724396, 18.055672)
+
+[node name="S" type="Sprite2D" parent="."]
+z_index = 100
+position = Vector2(152, 952)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_qvt8h")
+region_enabled = true
+region_rect = Rect2(42.50182, 41.047222, 18.724403, 17.864609)
+
+[node name="D" type="Sprite2D" parent="."]
+z_index = 100
+position = Vector2(200.00002, 952.00006)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_qvt8h")
+region_enabled = true
+region_rect = Rect2(62.15661, 41.51084, 18.915466, 17.291412)
+
+[node name="Arrow2" type="TextureRect" parent="."]
+z_index = 100
+offset_left = 172.0
+offset_top = 976.0
+offset_right = 572.0
+offset_bottom = 1376.0
+rotation = 1.5707964
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_4ugcc")
+flip_v = true
+
+[node name="Arrow4" type="TextureRect" parent="."]
+z_index = 100
+offset_left = 132.0
+offset_top = 881.0
+offset_right = 532.0
+offset_bottom = 1281.0
+rotation = -1.5707961
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_4ugcc")
+
+[node name="Arrow5" type="TextureRect" parent="."]
+z_index = 100
+offset_left = 225.0
+offset_top = 933.0
+offset_right = 625.0
+offset_bottom = 1333.0001
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_4ugcc")
+
+[node name="Arrow3" type="TextureRect" parent="."]
+z_index = 100
+offset_left = 41.0
+offset_top = 932.99994
+offset_right = 441.0
+offset_bottom = 1333.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_4ugcc")
+flip_h = true
+
+[node name="Attack" type="Sprite2D" parent="."]
+z_index = 100
+position = Vector2(353, 933.00006)
+scale = Vector2(3, 3)
+texture = ExtResource("3_qvt8h")
+region_enabled = true
+region_rect = Rect2(42.264797, 60.832443, 19.005104, 18.659561)
+
+[node name="AttackLabel" type="RichTextLabel" parent="."]
+z_index = 100
+offset_left = 232.0
+offset_top = 869.0
+offset_right = 469.0
+offset_bottom = 897.0
+theme_override_fonts/normal_font = ExtResource("1_il18o")
+bbcode_enabled = true
+text = "[font_size=12][center]Attack![/center][/font_size]"
