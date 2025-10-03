@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://drebcau7s58qn"]
+[gd_scene load_steps=10 format=3 uid="uid://drebcau7s58qn"]
 
 [ext_resource type="Texture2D" uid="uid://c8ya0sik6kghv" path="res://characters/player/assets/MC_KnightBlob.png" id="1_wtjtx"]
 [ext_resource type="PackedScene" uid="uid://bpyugc671abl0" path="res://components/hitbox.tscn" id="2_rmiuj"]
@@ -15,6 +15,9 @@ size = Vector2(26, 27)
 [sub_resource type="CircleShape2D" id="CircleShape2D_pfnhy"]
 radius = 46.043457
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_fry3h"]
+radius = 160.0125
+
 [node name="Jester" type="CharacterBody2D"]
 collision_layer = 4
 
@@ -22,7 +25,6 @@ collision_layer = 4
 shape = SubResource("RectangleShape2D_g64rt")
 
 [node name="Hitbox" parent="." instance=ExtResource("2_rmiuj")]
-use_color = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -1.5)
@@ -33,7 +35,8 @@ debug_color = Color(0.65585005, 0.25187263, 0.5896923, 0.09411765)
 modulate = Color(0.93314946, 0, 0.026759928, 1)
 texture = ExtResource("1_wtjtx")
 
-[node name="EnemyBehavior" parent="." instance=ExtResource("3_kyeje")]
+[node name="EnemyBehavior" parent="." node_paths=PackedStringArray("player_detection_area") instance=ExtResource("3_kyeje")]
+player_detection_area = NodePath("../DetectionArea")
 speed_multiplier = 0.6
 
 [node name="EnemyAttack" parent="." node_paths=PackedStringArray("enemySprite", "enemyBehavior") instance=ExtResource("4_rmiuj")]
@@ -44,3 +47,12 @@ enemyBehavior = NodePath("../EnemyBehavior")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyAttack"]
 shape = SubResource("CircleShape2D_pfnhy")
 debug_color = Color(0.9098039, 0.34509805, 0.3529412, 0.101960786)
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_fry3h")
+debug_color = Color(0.2509804, 0.5058824, 1, 0.13333334)
