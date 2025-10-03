@@ -1,7 +1,7 @@
 [gd_scene load_steps=35 format=4 uid="uid://7ajujdfleb5a"]
 
 [ext_resource type="Script" uid="uid://bb10b8gom7cbe" path="res://scenes/Main_Menu/main_menu.gd" id="1_rdje0"]
-[ext_resource type="PackedScene" uid="uid://mibci3wgk2bn" path="res://dev_workspaces/bernard/UI_Overlay/Example Level.tscn" id="2_mmbmf"]
+[ext_resource type="PackedScene" uid="uid://bx7cdftbyvu4i" path="res://scenes/Level/level1.tscn" id="2_3n7hm"]
 [ext_resource type="TileSet" uid="uid://8b7ksx1jxhyi" path="res://assets/tilemap/tileset.tres" id="3_3n7hm"]
 [ext_resource type="FontFile" uid="uid://jttr5e0x0jj" path="res://assets/Fonts/Righteous.ttf" id="3_nxjpp"]
 [ext_resource type="Texture2D" uid="uid://p2jl0s1xmpl5" path="res://assets/sprites/Torch Animated.png" id="4_2wuca"]
@@ -213,7 +213,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rdje0")
-level_scene = ExtResource("2_mmbmf")
+level_scene = ExtResource("2_3n7hm")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(6, 6)
