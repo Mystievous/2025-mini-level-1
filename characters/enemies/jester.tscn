@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://drebcau7s58qn"]
+[gd_scene load_steps=9 format=3 uid="uid://drebcau7s58qn"]
 
 [ext_resource type="Texture2D" uid="uid://c8ya0sik6kghv" path="res://characters/player/assets/MC_KnightBlob.png" id="1_wtjtx"]
 [ext_resource type="PackedScene" uid="uid://bpyugc671abl0" path="res://components/hitbox.tscn" id="2_rmiuj"]
 [ext_resource type="PackedScene" uid="uid://dnyqgb7hecb1v" path="res://components/enemy_behavior.tscn" id="3_kyeje"]
 [ext_resource type="PackedScene" uid="uid://d3ob6s2xdv652" path="res://components/enemy_attack.tscn" id="4_rmiuj"]
+[ext_resource type="PackedScene" uid="uid://c1t5ske4fx8om" path="res://characters/enemies/jester_attack.tscn" id="5_pfnhy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g64rt"]
 size = Vector2(16, 16)
@@ -12,7 +13,7 @@ size = Vector2(16, 16)
 size = Vector2(26, 27)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pfnhy"]
-radius = 74.06078
+radius = 46.043457
 
 [node name="Jester" type="CharacterBody2D"]
 collision_layer = 4
@@ -36,6 +37,7 @@ texture = ExtResource("1_wtjtx")
 speed_multiplier = 0.6
 
 [node name="EnemyAttack" parent="." node_paths=PackedStringArray("enemySprite", "enemyBehavior") instance=ExtResource("4_rmiuj")]
+effect_scene = ExtResource("5_pfnhy")
 enemySprite = NodePath("../Sprite2D")
 enemyBehavior = NodePath("../EnemyBehavior")
 

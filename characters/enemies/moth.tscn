@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://rhi68tw21wia"]
+[gd_scene load_steps=9 format=3 uid="uid://rhi68tw21wia"]
 
 [ext_resource type="PackedScene" uid="uid://bpyugc671abl0" path="res://components/hitbox.tscn" id="1_17k4o"]
 [ext_resource type="Texture2D" uid="uid://c8ya0sik6kghv" path="res://characters/player/assets/MC_KnightBlob.png" id="2_6bx76"]
 [ext_resource type="PackedScene" uid="uid://dnyqgb7hecb1v" path="res://components/enemy_behavior.tscn" id="3_ek5n7"]
 [ext_resource type="PackedScene" uid="uid://d3ob6s2xdv652" path="res://components/enemy_attack.tscn" id="4_6bx76"]
+[ext_resource type="PackedScene" uid="uid://cfka2ldpmu4yf" path="res://characters/enemies/moth_attack.tscn" id="5_ek5n7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g64rt"]
 size = Vector2(12, 12)
@@ -12,7 +13,7 @@ size = Vector2(12, 12)
 size = Vector2(20, 19)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ek5n7"]
-radius = 44.011364
+radius = 29.017237
 
 [node name="Moth" type="CharacterBody2D"]
 collision_layer = 4
@@ -40,6 +41,7 @@ avoidance_mask = 4
 speed_multiplier = 0.9
 
 [node name="EnemyAttack" parent="." node_paths=PackedStringArray("enemySprite", "enemyBehavior") instance=ExtResource("4_6bx76")]
+effect_scene = ExtResource("5_ek5n7")
 enemySprite = NodePath("../Sprite2D")
 enemyBehavior = NodePath("../EnemyBehavior")
 

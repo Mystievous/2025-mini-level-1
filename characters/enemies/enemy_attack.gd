@@ -14,6 +14,8 @@ extends Area2D
 ## Multiplier for how far the enemy will "pull back" when warning an attack
 @export var warning_distance_multiplier: float = 8.0
 
+@export var effect_scene: PackedScene
+
 @export_group("Node References")
 @export var enemySprite: Sprite2D
 @export var enemyBehavior: EnemyBehavior
@@ -76,10 +78,19 @@ func _attack():
 	attack_tween = create_tween()
 	attack_tween.tween_property(enemySprite, "position", initial_sprite_position, 0.05)
 	
-	print("Trying Attack")
+	
+	if effect_scene:
+		var slash_position := global_position + (attack_direction * attack_range) * 0.85
+		var effect: Node2D = effect_scene.instantiate()
+		get_tree().root.add_child(effect)
+		effect.global_position = slash_position
+		effect.rotate(attack_direction.angle())
+		
+	var target_position := global_position + (attack_direction * attack_range)
+	
 	var space_state := get_world_2d().direct_space_state
 	# use global coordinates, not local to node
-	var query := PhysicsRayQueryParameters2D.create(global_position, global_position + (attack_direction * attack_range))
+	var query := PhysicsRayQueryParameters2D.create(global_position, target_position)
 	query.collision_mask = collision_mask
 	query.exclude = [self]
 	query.collide_with_areas = true
@@ -87,10 +98,7 @@ func _attack():
 	var result := space_state.intersect_ray(query)
 	
 	if result and result.collider:
-		print("Something Found")
-		print(result.collider)
 		if result.collider.has_method("hurt"):
-			print("It had hurt!")
 			result.collider.hurt(attack_color)
 	
 	enemyBehavior.disable_movement = false
