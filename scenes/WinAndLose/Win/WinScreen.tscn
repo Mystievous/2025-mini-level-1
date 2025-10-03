@@ -1,8 +1,9 @@
-[gd_scene load_steps=41 format=4 uid="uid://c0vo2xqt60kjb"]
+[gd_scene load_steps=42 format=4 uid="uid://c0vo2xqt60kjb"]
 
 [ext_resource type="Script" uid="uid://d0k3nklnk133l" path="res://scenes/WinAndLose/Win/win_screen.gd" id="1_rok6t"]
 [ext_resource type="TileSet" uid="uid://8b7ksx1jxhyi" path="res://assets/tilemap/tileset.tres" id="2_0js4w"]
 [ext_resource type="Texture2D" uid="uid://djm5wg47if1t1" path="res://assets/tilemap/ML1_Walls.png" id="2_4f8if"]
+[ext_resource type="PackedScene" uid="uid://bx7cdftbyvu4i" path="res://scenes/Level/level1.tscn" id="2_w7shx"]
 [ext_resource type="Texture2D" uid="uid://dc8uv8vl60rbx" path="res://assets/tilemap/ML1_Floors.png" id="3_0js4w"]
 [ext_resource type="Texture2D" uid="uid://b1ob0vqvnq1xv" path="res://scenes/WinAndLose/Assets/win.png" id="4_w7shx"]
 [ext_resource type="Texture2D" uid="uid://p2jl0s1xmpl5" path="res://assets/sprites/Torch Animated.png" id="5_g761m"]
@@ -231,6 +232,7 @@ animations = [{
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_rok6t")
+level_scene = ExtResource("2_w7shx")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(6, 6)
@@ -317,3 +319,5 @@ offset_bottom = 240.0
 theme_override_fonts/font = ExtResource("9_j45xs")
 theme_override_font_sizes/font_size = 30
 text = "Venture Again?"
+
+[connection signal="pressed" from="Button" to="." method="start_game"]
