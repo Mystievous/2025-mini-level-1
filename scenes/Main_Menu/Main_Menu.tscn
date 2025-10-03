@@ -1,8 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://7ajujdfleb5a"]
+[gd_scene load_steps=35 format=4 uid="uid://7ajujdfleb5a"]
 
 [ext_resource type="Script" uid="uid://bb10b8gom7cbe" path="res://scenes/Main_Menu/main_menu.gd" id="1_rdje0"]
 [ext_resource type="PackedScene" uid="uid://mibci3wgk2bn" path="res://dev_workspaces/bernard/UI_Overlay/Example Level.tscn" id="2_mmbmf"]
-[ext_resource type="Texture2D" uid="uid://djm5wg47if1t1" path="res://assets/tilemap/ML1_Walls.png" id="3_3n7hm"]
+[ext_resource type="TileSet" uid="uid://8b7ksx1jxhyi" path="res://assets/tilemap/tileset.tres" id="3_3n7hm"]
 [ext_resource type="FontFile" uid="uid://jttr5e0x0jj" path="res://assets/Fonts/Righteous.ttf" id="3_nxjpp"]
 [ext_resource type="Texture2D" uid="uid://p2jl0s1xmpl5" path="res://assets/sprites/Torch Animated.png" id="4_2wuca"]
 [ext_resource type="Texture2D" uid="uid://c25ijc04dv3ne" path="res://characters/player/assets/MC_Red.png" id="6_eif2k"]
@@ -215,13 +215,10 @@ grow_vertical = 2
 script = ExtResource("1_rdje0")
 level_scene = ExtResource("2_mmbmf")
 
-[node name="Menu_background" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 480.0
-offset_bottom = 270.0
-scale = Vector2(4, 4)
-texture = ExtResource("3_3n7hm")
-stretch_mode = 1
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(6, 6)
+tile_map_data = PackedByteArray("AAAAAAAABQAAAAAAAAAAAAEABQAAAAAAAAAAAAIABQAEAAAAAAAAAAMABQACAAAAAAAAAAQABQADAAEAAAAAAAUABQAEAAAAAAABAAAABQABAAAAAAABAAEABQAAAAEAAAABAAIABQAGAAEAAAABAAMABQAEAAAAAAABAAQABQAGAAAAAAABAAUABQAHAAAAAAACAAAABQAEAAAAAAACAAEABQAAAAAAAAACAAIABQAAAAAAAAACAAMABQACAAEAAAACAAQABQAAAAEAAAACAAUABQABAAAAAAADAAAABQAAAAAAAAADAAEABQAHAAAAAAADAAIABQABAAAAAAADAAMABQAAAAEAAAADAAQABQAGAAEAAAADAAUABQAHAAEAAAAEAAAABQAHAAAAAAAEAAEABQAAAAEAAAAEAAIABQADAAEAAAAEAAMABQAFAAAAAAAEAAQABQAAAAEAAAAEAAUABQACAAEAAAAFAAAABQABAAEAAAAFAAEABQAFAAEAAAAFAAIABQADAAAAAAAFAAMABQACAAEAAAAFAAQABQAHAAEAAAAFAAUABQAFAAEAAAAGAAAABQAFAAAAAAAGAAEABQADAAAAAAAGAAIABQAEAAAAAAAGAAMABQAAAAEAAAAGAAQABQAAAAEAAAAGAAUABQADAAAAAAAHAAAABQACAAAAAAAHAAEABQAHAAEAAAAHAAIABQAGAAEAAAAHAAMABQAEAAAAAAAHAAQABQACAAEAAAAHAAUABQAGAAEAAAAIAAAABQAHAAAAAAAIAAEABQADAAAAAAAIAAIABQAGAAAAAAAIAAMABQAHAAEAAAAIAAQABQAGAAAAAAAIAAUABQABAAAAAAAJAAAABQAGAAEAAAAJAAEABQACAAAAAAAJAAIABQAEAAAAAAAJAAMABQADAAAAAAAJAAQABQABAAAAAAAJAAUABQAEAAAAAAA=")
+tile_set = ExtResource("3_3n7hm")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

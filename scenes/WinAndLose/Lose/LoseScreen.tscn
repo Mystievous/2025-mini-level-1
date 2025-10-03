@@ -1,8 +1,9 @@
-[gd_scene load_steps=59 format=3 uid="uid://bkarfe8lqc5y1"]
+[gd_scene load_steps=60 format=4 uid="uid://bkarfe8lqc5y1"]
 
 [ext_resource type="Script" uid="uid://cxwlgc7iepiy7" path="res://scenes/WinAndLose/Lose/lose_screen.gd" id="1_utg8w"]
 [ext_resource type="PackedScene" uid="uid://mibci3wgk2bn" path="res://dev_workspaces/bernard/UI_Overlay/Example Level.tscn" id="2_67j6h"]
 [ext_resource type="Texture2D" uid="uid://dc8uv8vl60rbx" path="res://assets/tilemap/ML1_Floors.png" id="2_pxdy7"]
+[ext_resource type="TileSet" uid="uid://8b7ksx1jxhyi" path="res://assets/tilemap/tileset.tres" id="3_67j6h"]
 [ext_resource type="Texture2D" uid="uid://p2jl0s1xmpl5" path="res://assets/sprites/Torch Animated.png" id="3_boar0"]
 [ext_resource type="Texture2D" uid="uid://djm5wg47if1t1" path="res://assets/tilemap/ML1_Walls.png" id="3_utg8w"]
 [ext_resource type="Texture2D" uid="uid://dxrdiksid8jcp" path="res://scenes/WinAndLose/Assets/lose.png" id="4_xlugi"]
@@ -352,7 +353,13 @@ anchors_preset = 0
 script = ExtResource("1_utg8w")
 level_scene = ExtResource("2_67j6h")
 
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(6, 6)
+tile_map_data = PackedByteArray("AAAAAAAABQAEAAEAAAAAAAEABQACAAEAAAAAAAIABQAFAAAAAAAAAAMABQACAAEAAAAAAAQABQABAAEAAAABAAAABQAFAAAAAAABAAEABQAAAAAAAAABAAIABQAHAAAAAAABAAMABQADAAEAAAABAAQABQABAAAAAAACAAAABQAAAAAAAAACAAEABQABAAAAAAACAAIABQAEAAAAAAACAAMABQAAAAEAAAACAAQABQAGAAEAAAADAAAABQAGAAAAAAADAAEABQAAAAEAAAADAAIABQAGAAEAAAADAAMABQACAAEAAAADAAQABQAGAAEAAAAEAAAABQAEAAAAAAAEAAEABQAFAAEAAAAEAAIABQADAAAAAAAEAAMABQABAAEAAAAEAAQABQADAAEAAAAFAAAABQAFAAAAAAAFAAEABQAGAAAAAAAFAAIABQAAAAAAAAAFAAMABQABAAAAAAAFAAQABQAAAAEAAAAGAAAABQAGAAEAAAAGAAEABQABAAAAAAAGAAIABQAAAAEAAAAGAAMABQAHAAAAAAAGAAQABQABAAEAAAAHAAAABQAAAAAAAAAHAAEABQAFAAEAAAAHAAIABQADAAAAAAAHAAMABQADAAEAAAAHAAQABQABAAEAAAAIAAAABQABAAEAAAAIAAEABQAAAAAAAAAIAAIABQAAAAAAAAAIAAMABQACAAEAAAAIAAQABQADAAEAAAAJAAAABQAHAAAAAAAJAAEABQADAAAAAAAJAAIABQAHAAAAAAAJAAMABQABAAAAAAAJAAQABQAFAAAAAAA=")
+tile_set = ExtResource("3_67j6h")
+
 [node name="WallBG" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 383.99997
 offset_bottom = 166.4
