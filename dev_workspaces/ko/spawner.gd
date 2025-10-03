@@ -16,19 +16,18 @@ enum SpawnerTypeEnum {
 
 ##Determines what monsters will spawn from the Marker2D spawner. Default: Random
 @export var spawnerType: SpawnerTypeEnum
+@export var spawnRadiusMinimum: int = 30
 ##Determines how far enemies can spawn from the Marker2D spawner. Default: 100
 @export var spawnRadiusSize: int = 100 
 ##Sets how many times enemies will reappear after they are all defeated. Default: 3
 @export var numberOfWaves: int = 3
 ##Sets how many enemies are in a wave. Default: 5
 @export var amountOfEnemiesInWave: int = 5
-##Determines whether the sprite at the spawner's position, the spawn radious,  debug text is shown and if pressing spacebar will kill and enemy. Default: false
+##Determines whether the sprite at the spawner's position, the spawn radious and debug text is shown. Default: false
 @export var showDebugVisual: bool = false
 
 #keeps track of the current wave
 var currentWave: int = 0
-#keeps track of how many enemies are left in the wave.
-var enemiesLeftInWave: int = amountOfEnemiesInWave
 
 func _ready() -> void:
 	if showDebugVisual:
@@ -44,9 +43,6 @@ func _process(_delta: float) -> void:
 			for childrenCounter in self.get_children():
 				if (childrenCounter.get_index() > 0): #skips the first node because that one is the DebugVisual
 					self.get_child(childrenCounter.get_index()).queue_free()
-					enemiesLeftInWave = self.get_child_count()-2
-					print("Enemies Left in wave: ", enemiesLeftInWave)
-					return
 
 #do the next wave if all enemies are defeated and currentWave < numberOfWaves
 func waves() -> void:
@@ -58,6 +54,9 @@ func waves() -> void:
 				print("curent wave is ",  currentWave)
 				print(self.get_children())
 				print()
+
+func random_positive_or_negative():
+		return (randi_range(0, 1) * 2 - 1)
 
 func spawnEnemy() -> void:
 	var enemyInstance
@@ -78,6 +77,6 @@ func spawnEnemy() -> void:
 	add_child(enemyInstance) #adds the new enemy to the scene	
 
 	#modifies the enemies position to a random range determined by spawnRadiusSize
-	var xOffset: int = randi_range(-spawnRadiusSize, spawnRadiusSize)
-	var yOffset: int = randi_range(-spawnRadiusSize, spawnRadiusSize)
+	var xOffset: int = randi_range(spawnRadiusMinimum, spawnRadiusSize) * random_positive_or_negative()
+	var yOffset: int = randi_range(spawnRadiusMinimum, spawnRadiusSize) * random_positive_or_negative()
 	enemyInstance.position = Vector2i(xOffset, yOffset)
