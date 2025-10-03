@@ -1,10 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://mibci3wgk2bn"]
+[gd_scene load_steps=11 format=3 uid="uid://mibci3wgk2bn"]
 
 [ext_resource type="Texture2D" uid="uid://hp1fhiai4bpv" path="res://dev_workspaces/bernard/assets/ML1_Floors-Sheet.png" id="1_ilsv3"]
 [ext_resource type="Texture2D" uid="uid://djm5wg47if1t1" path="res://dev_workspaces/bernard/assets/ML1_Walls.png" id="2_rmex0"]
 [ext_resource type="Texture2D" uid="uid://c25ijc04dv3ne" path="res://levels/Main_Menu/Assets/MC_Red.png" id="3_ilsv3"]
 [ext_resource type="Script" uid="uid://cn675hn2ola46" path="res://dev_workspaces/bernard/UI_Overlay/character_body_2d.gd" id="3_rmex0"]
-[ext_resource type="FontFile" uid="uid://jttr5e0x0jj" path="res://levels/Main_Menu/Assets/Righteous.ttf" id="5_p38dd"]
+[ext_resource type="PackedScene" uid="uid://b6k840sl3v567" path="res://levels/UI_Overlay.tscn" id="6_p4vx3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rmex0"]
 atlas = ExtResource("3_ilsv3")
@@ -41,12 +41,6 @@ animations = [{
 "name": &"walkDown",
 "speed": 3.0
 }]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p4vx3"]
-bg_color = Color(0.7058824, 0, 0.2, 0.29411766)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p38dd"]
-bg_color = Color(0.7058824, 0, 0.2, 0.29411766)
 
 [node name="ExampleLevel" type="Node2D"]
 
@@ -104,70 +98,5 @@ animation = &"walkDown"
 position = Vector2(259, -258)
 zoom = Vector2(4, 4)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Controls" type="RichTextLabel" parent="CanvasLayer"]
-offset_left = 35.0
-offset_top = 904.0
-offset_right = 530.0
-offset_bottom = 1063.0
-theme_override_fonts/normal_font = ExtResource("5_p38dd")
-bbcode_enabled = true
-text = "[font_size=15]    Character Controls
-W: Up
-A: Left
-S: Down
-D: Right
-(Insert Keystroke): Attack
-[/font_size]"
-
-[node name="ControlsBGPanel" type="Panel" parent="CanvasLayer"]
-z_index = -5
-offset_left = 25.0
-offset_top = 897.0
-offset_right = 529.0
-offset_bottom = 1063.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_p4vx3")
-
-[node name="Progress" type="RichTextLabel" parent="CanvasLayer"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -121.0
-offset_top = 33.0
-offset_right = 143.0
-offset_bottom = 73.0
-grow_horizontal = 2
-theme_override_fonts/normal_font = ExtResource("5_p38dd")
-bbcode_enabled = true
-text = "[font_size=15]Progress:[/font_size]"
-
-[node name="ProgressBGPanel" type="Panel" parent="CanvasLayer"]
-z_index = -5
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -133.0
-offset_top = 17.0
-offset_right = 139.0
-offset_bottom = 69.0
-grow_horizontal = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_p38dd")
-
-[node name="PlayerColor" type="RichTextLabel" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -91.0
-offset_top = 74.0
-offset_right = 91.0
-offset_bottom = 95.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(0.4557587, 0, 0.11700445, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("5_p38dd")
-bbcode_enabled = true
-text = "[font_size=10][center]Red[/center][/font_size]"
+[node name="UiOverlay" parent="CharacterBody2D" instance=ExtResource("6_p4vx3")]
+follow_viewport_enabled = false
