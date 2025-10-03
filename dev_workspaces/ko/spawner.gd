@@ -33,7 +33,7 @@ signal wave_started(wave_num: int)
 #keeps track of the current wave
 var currentWave: int = 0
 #keeps track of how many enemies are left in the wave
-var enemiesLeftInWave: int = amountOfEnemiesInWave - self.get_child_count() - 1
+var enemiesLeftInWave: int = amountOfEnemiesInWave
 
 func _ready() -> void:
 	if showDebugVisual:
