@@ -28,6 +28,8 @@ enum SpawnerTypeEnum {
 
 #keeps track of the current wave
 var currentWave: int = 0
+#keeps track of how many enemies are left in the wave
+var enemiesLeftInWave: int = amountOfEnemiesInWave
 
 func _ready() -> void:
 	if showDebugVisual:
@@ -37,12 +39,17 @@ func _ready() -> void:
 #does a new wave when the wave conditions are met
 func _process(_delta: float) -> void:
 	waves()
+	if (enemiesLeftInWave <= self.get_child_count()):
+		enemiesLeftInWave = self.get_child_count()-1
+		#print("Enemies Left in wave: ", enemiesLeftInWave)
+		
 	#when spacebar is pressed: deletes all enemies in the wave so the next one can appear
 	if showDebugVisual:
 		if Input.is_action_just_pressed("ui_accept"):
 			for childrenCounter in self.get_children():
 				if (childrenCounter.get_index() > 0): #skips the first node because that one is the DebugVisual
 					self.get_child(childrenCounter.get_index()).queue_free()
+					return
 
 #do the next wave if all enemies are defeated and currentWave < numberOfWaves
 func waves() -> void:
