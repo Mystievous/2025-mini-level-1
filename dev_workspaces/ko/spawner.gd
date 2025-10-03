@@ -96,7 +96,8 @@ func spawnEnemy() -> void:
 
 func get_wave_progress() -> float:
 	if amountOfEnemiesInWave > 0:
-		return float(amountOfEnemiesInWave - enemiesLeftInWave) / float(amountOfEnemiesInWave)
+		enemiesLeftInWave = self.get_child_count()-1
+		return float(enemiesLeftInWave) / float(amountOfEnemiesInWave)
 	return 0.0
 
 func is_level_cleared() -> bool:

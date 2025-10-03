@@ -1,7 +1,6 @@
-[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://8b7ksx1jxhyi"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://8b7ksx1jxhyi"]
 
 [ext_resource type="Texture2D" uid="uid://dc8uv8vl60rbx" path="res://assets/tilemap/ML1_Floors.png" id="1_uxkie"]
-[ext_resource type="Texture2D" path="res://dev_workspaces/bernard/assets/ML1_Walls.png" id="2_p02hu"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_uxkie"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -20,7 +19,6 @@ texture_region_size = Vector2i(32, 32)
 2:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_uxkie")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bqqb7"]
-texture = ExtResource("2_p02hu")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
