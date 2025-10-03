@@ -11,6 +11,7 @@ size = Vector2(16, 16)
 size = Vector2(20, 21)
 
 [node name="TestPlayer" type="CharacterBody2D" groups=["Player"]]
+motion_mode = 1
 script = ExtResource("1_goxvr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

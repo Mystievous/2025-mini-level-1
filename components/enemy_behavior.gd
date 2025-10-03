@@ -61,7 +61,6 @@ func wander() -> void:
 	var distance := randf_range(minimum_wander_distance, maximum_wander_distance)
 	
 	wander_target = parent.global_position + vector * distance
-	print("Wandering to ", wander_target)
 	
 func clear_wander() -> void:
 	idle_timer.stop()
@@ -72,14 +71,16 @@ func _get_target_position_by_player() -> Vector2:
 		return Vector2.ZERO
 	
 	var player_position = player.global_position
+	var parent_position = parent.global_position
 	
-	var vector_player_towards_self = Vector2.from_angle(player_position.angle_to_point(parent.global_position)).normalized() * target_distance_from_player
+	var vector_player_towards_self = player_position.direction_to(parent_position) * target_distance_from_player
 	
 	return player_position + vector_player_towards_self
 
 func _physics_process(_delta: float) -> void:
 	if disable_movement:
-		velocity = Vector2()
+		parent.velocity = Vector2()
+		parent.move_and_slide()
 		return
 	if not player and idle_timer.is_stopped() and not wander_target:
 		idle_timer.wait_time = randf_range(minimum_idle_time, maximum_idle_time)
@@ -105,7 +106,7 @@ func _physics_process(_delta: float) -> void:
 		return
 	
 	if avoidance_enabled:
-		velocity = new_velocity
+		parent.velocity = new_velocity
 	else:
 		_on_velocity_computed(new_velocity)
 		

@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=4 uid="uid://bxe1nty1rbnpo"]
 
-[ext_resource type="PackedScene" uid="uid://drebcau7s58qn" path="res://characters/enemies/jester.tscn" id="1_76ape"]
+[ext_resource type="PackedScene" uid="uid://drebcau7s58qn" path="res://characters/enemies/jester/jester.tscn" id="1_76ape"]
 [ext_resource type="TileSet" uid="uid://8b7ksx1jxhyi" path="res://assets/tilemap/tileset.tres" id="1_nm8p4"]
 [ext_resource type="PackedScene" uid="uid://uy4q3a6obvh7" path="res://dev_workspaces/artemis/test_player.tscn" id="3_qc448"]
-[ext_resource type="PackedScene" uid="uid://dla32lb7q5d2l" path="res://characters/enemies/tree.tscn" id="4_15aef"]
-[ext_resource type="PackedScene" uid="uid://rhi68tw21wia" path="res://characters/enemies/moth.tscn" id="5_idqib"]
+[ext_resource type="PackedScene" uid="uid://dla32lb7q5d2l" path="res://characters/enemies/tree/tree.tscn" id="4_15aef"]
+[ext_resource type="PackedScene" uid="uid://rhi68tw21wia" path="res://characters/enemies/moth/moth.tscn" id="5_idqib"]
 [ext_resource type="PackedScene" uid="uid://dog35jtjm8ivw" path="res://characters/player/player_camera.tscn" id="6_ew0fg"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qc448"]
@@ -25,28 +25,28 @@ tile_set = ExtResource("1_nm8p4")
 position = Vector2(382, 169)
 
 [node name="Tree2" parent="." instance=ExtResource("4_15aef")]
-position = Vector2(305, 331)
+position = Vector2(164, 359)
 
 [node name="Tree3" parent="." instance=ExtResource("4_15aef")]
-position = Vector2(195, 61)
+position = Vector2(91, 102)
 
 [node name="Jester" parent="." instance=ExtResource("1_76ape")]
-position = Vector2(88, 94)
+position = Vector2(90, 263)
 
 [node name="Jester2" parent="." instance=ExtResource("1_76ape")]
-position = Vector2(414, 314)
+position = Vector2(371, 359)
 
 [node name="Jester3" parent="." instance=ExtResource("1_76ape")]
-position = Vector2(149, 304)
+position = Vector2(287, 108)
 
 [node name="Moth" parent="." instance=ExtResource("5_idqib")]
-position = Vector2(120, 237)
+position = Vector2(440, 286)
 
 [node name="Moth2" parent="." instance=ExtResource("5_idqib")]
-position = Vector2(361, 107)
+position = Vector2(179, 104)
 
 [node name="Moth3" parent="." instance=ExtResource("5_idqib")]
-position = Vector2(344, 386)
+position = Vector2(255, 368)
 
 [node name="TestPlayer" parent="." instance=ExtResource("3_qc448")]
 position = Vector2(247, 204)

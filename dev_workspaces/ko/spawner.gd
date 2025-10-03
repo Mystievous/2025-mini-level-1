@@ -1,8 +1,8 @@
 extends Marker2D
 #preloads the enemies to be able to insantiate them from the spawner
-var enemySceneRed   = preload("res://characters/enemies/jester.tscn")
-var enemySceneGreen = preload("res://characters/enemies/tree.tscn")
-var enemySceneBlue  = preload("res://characters/enemies/moth.tscn")
+var enemySceneRed   := preload("uid://drebcau7s58qn")
+var enemySceneGreen := preload("uid://dla32lb7q5d2l")
+var enemySceneBlue  := preload("uid://rhi68tw21wia")
 
 @onready var debug_visuals: Node = $DebugVisuals
 @onready var debug_spawner_range_visual: Sprite2D = $DebugVisuals/SpawnerRange
