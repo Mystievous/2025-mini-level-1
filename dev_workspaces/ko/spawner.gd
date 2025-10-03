@@ -28,7 +28,7 @@ enum SpawnerTypeEnum {
 #keeps track of the current wave
 var currentWave: int = 0
 #keeps track of how many enemies are left in the wave.
-var enemiesLeftInWave: int = 0
+var enemiesLeftInWave: int = amountOfEnemiesInWave
 
 func _ready() -> void:
 	if showDebugVisual:
