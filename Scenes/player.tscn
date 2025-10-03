@@ -70,8 +70,4 @@ script = ExtResource("4_vgqql")
 
 [node name="playerAttack" parent="." instance=ExtResource("4_fkybt")]
 
-[node name="AnimationTimer" type="Timer" parent="."]
-wait_time = 0.5
-
 [connection signal="hit" from="playerAttack" to="TestHealth" method="_on_player_attack_hit"]
-[connection signal="timeout" from="AnimationTimer" to="playerAttack" method="_on_animation_timer_timeout"]
