@@ -1,0 +1,82 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://cqv3w8l5yiuam"]
+
+[ext_resource type="Texture2D" uid="uid://coghdj8jpkrfi" path="res://characters/enemies/moth/assets/moth-composite-Sheet.png" id="1_mep0l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rw7s"]
+atlas = ExtResource("1_mep0l")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drp7a"]
+atlas = ExtResource("1_mep0l")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mep0l"]
+atlas = ExtResource("1_mep0l")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1eubh"]
+atlas = ExtResource("1_mep0l")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brhsk"]
+atlas = ExtResource("1_mep0l")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lydsk"]
+atlas = ExtResource("1_mep0l")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvg50"]
+atlas = ExtResource("1_mep0l")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vi3j"]
+atlas = ExtResource("1_mep0l")
+region = Rect2(128, 64, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rw7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drp7a")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mep0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1eubh")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brhsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lydsk")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvg50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vi3j")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}]

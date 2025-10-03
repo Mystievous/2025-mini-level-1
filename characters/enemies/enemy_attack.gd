@@ -17,7 +17,7 @@ extends Area2D
 @export var effect_scene: PackedScene
 
 @export_group("Node References")
-@export var enemySprite: Sprite2D
+@export var enemySprite: Node2D
 @export var enemyBehavior: EnemyBehavior
 
 @onready var cooldown_timer: Timer = Timer.new()
@@ -60,9 +60,9 @@ func _process(_delta: float) -> void:
 		var bodies := get_overlapping_bodies()
 		for body in bodies:
 			if body.is_in_group("Player"):
-				var player_position = body.global_position
+				var player_position := body.global_position
 	
-				var vector_towards_player = Vector2.from_angle(get_parent().global_position.angle_to_point(player_position)).normalized()
+				var vector_towards_player: Vector2 = get_parent().global_position.direction_to(player_position)
 				
 				# Start warning for an attack towards the current player position
 				attack_direction = vector_towards_player

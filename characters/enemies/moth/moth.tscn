@@ -1,19 +1,20 @@
-[gd_scene load_steps=10 format=3 uid="uid://rhi68tw21wia"]
+[gd_scene load_steps=11 format=3 uid="uid://rhi68tw21wia"]
 
 [ext_resource type="PackedScene" uid="uid://bpyugc671abl0" path="res://components/hitbox.tscn" id="1_17k4o"]
-[ext_resource type="Texture2D" uid="uid://c8ya0sik6kghv" path="res://characters/player/assets/MC_KnightBlob.png" id="2_6bx76"]
+[ext_resource type="SpriteFrames" uid="uid://cqv3w8l5yiuam" path="res://characters/enemies/moth/assets/moth.tres" id="2_w6iwb"]
 [ext_resource type="PackedScene" uid="uid://dnyqgb7hecb1v" path="res://components/enemy_behavior.tscn" id="3_ek5n7"]
 [ext_resource type="PackedScene" uid="uid://d3ob6s2xdv652" path="res://components/enemy_attack.tscn" id="4_6bx76"]
-[ext_resource type="PackedScene" uid="uid://cfka2ldpmu4yf" path="res://characters/enemies/moth_attack.tscn" id="5_ek5n7"]
+[ext_resource type="PackedScene" uid="uid://cfka2ldpmu4yf" path="res://characters/enemies/moth/moth_attack.tscn" id="5_ek5n7"]
+[ext_resource type="PackedScene" uid="uid://b7snsno4h1lc1" path="res://components/animation_handler.tscn" id="6_7hb22"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g64rt"]
-size = Vector2(12, 12)
+size = Vector2(32, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rmiuj"]
-size = Vector2(20, 19)
+size = Vector2(44, 41)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ek5n7"]
-radius = 29.017237
+radius = 36.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qpu0q"]
 radius = 160.0125
@@ -28,16 +29,16 @@ shape = SubResource("RectangleShape2D_g64rt")
 color = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_rmiuj")
 debug_color = Color(0.65585005, 0.25187263, 0.5896923, 0.09411765)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 0.5245805, 0.8111137, 1)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("2_6bx76")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("2_w6iwb")
+animation = &"walk_down"
 
 [node name="EnemyBehavior" parent="." node_paths=PackedStringArray("player_detection_area") instance=ExtResource("3_ek5n7")]
+radius = 20.0
 avoidance_layers = 4
 avoidance_mask = 4
 player_detection_area = NodePath("../DetectionArea")
@@ -46,7 +47,7 @@ speed_multiplier = 0.9
 [node name="EnemyAttack" parent="." node_paths=PackedStringArray("enemySprite", "enemyBehavior") instance=ExtResource("4_6bx76")]
 attack_color = 2
 effect_scene = ExtResource("5_ek5n7")
-enemySprite = NodePath("../Sprite2D")
+enemySprite = NodePath("../AnimatedSprite2D")
 enemyBehavior = NodePath("../EnemyBehavior")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyAttack"]
@@ -61,3 +62,7 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_qpu0q")
 debug_color = Color(0.2509804, 0.5058824, 1, 0.13333334)
+
+[node name="AnimationHandler" parent="." node_paths=PackedStringArray("animated_sprite") instance=ExtResource("6_7hb22")]
+animated_sprite = NodePath("../AnimatedSprite2D")
+pause_when_idle = false

@@ -1,41 +1,45 @@
-[gd_scene load_steps=10 format=3 uid="uid://dla32lb7q5d2l"]
+[gd_scene load_steps=11 format=3 uid="uid://dla32lb7q5d2l"]
 
 [ext_resource type="PackedScene" uid="uid://bpyugc671abl0" path="res://components/hitbox.tscn" id="1_3k34j"]
-[ext_resource type="Texture2D" uid="uid://c8ya0sik6kghv" path="res://characters/player/assets/MC_KnightBlob.png" id="2_6xidp"]
+[ext_resource type="SpriteFrames" uid="uid://bm5u1w1gq35bt" path="res://characters/enemies/tree/assets/tree.tres" id="2_1i4af"]
 [ext_resource type="PackedScene" uid="uid://dnyqgb7hecb1v" path="res://components/enemy_behavior.tscn" id="3_pllno"]
 [ext_resource type="PackedScene" uid="uid://d3ob6s2xdv652" path="res://components/enemy_attack.tscn" id="4_6xidp"]
-[ext_resource type="PackedScene" uid="uid://djrcvmex55oor" path="res://characters/enemies/tree_attack.tscn" id="5_pllno"]
+[ext_resource type="PackedScene" uid="uid://djrcvmex55oor" path="res://characters/enemies/tree/tree_attack.tscn" id="5_pllno"]
+[ext_resource type="PackedScene" uid="uid://b7snsno4h1lc1" path="res://components/animation_handler.tscn" id="6_3ka11"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g64rt"]
-size = Vector2(24, 24)
+size = Vector2(37, 57)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rmiuj"]
-size = Vector2(38, 39)
+size = Vector2(58, 68)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pllno"]
-radius = 47.0
+radius = 59.008472
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7tyb5"]
-radius = 160.0125
+radius = 178.13759
 
 [node name="Tree" type="CharacterBody2D"]
 collision_layer = 4
+motion_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -1.5)
 shape = SubResource("RectangleShape2D_g64rt")
 
 [node name="Hitbox" parent="." instance=ExtResource("1_3k34j")]
 color = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, -3.5)
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_rmiuj")
 debug_color = Color(0.65585005, 0.25187263, 0.5896923, 0.09411765)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.18317756, 0.59655994, 0, 1)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_6xidp")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -4)
+sprite_frames = ExtResource("2_1i4af")
+animation = &"idle"
+autoplay = "idle"
 
 [node name="EnemyBehavior" parent="." node_paths=PackedStringArray("player_detection_area") instance=ExtResource("3_pllno")]
 avoidance_layers = 2
@@ -47,7 +51,7 @@ speed_multiplier = 0.3
 [node name="EnemyAttack" parent="." node_paths=PackedStringArray("enemySprite", "enemyBehavior") instance=ExtResource("4_6xidp")]
 attack_color = 1
 effect_scene = ExtResource("5_pllno")
-enemySprite = NodePath("../Sprite2D")
+enemySprite = NodePath("../AnimatedSprite2D")
 enemyBehavior = NodePath("../EnemyBehavior")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyAttack"]
@@ -62,3 +66,6 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_7tyb5")
 debug_color = Color(0.2509804, 0.5058824, 1, 0.13333334)
+
+[node name="AnimationHandler" parent="." node_paths=PackedStringArray("animated_sprite") instance=ExtResource("6_3ka11")]
+animated_sprite = NodePath("../AnimatedSprite2D")
