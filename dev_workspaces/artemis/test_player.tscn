@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://uy4q3a6obvh7"]
+[gd_scene load_steps=7 format=3 uid="uid://uy4q3a6obvh7"]
 
 [ext_resource type="Script" uid="uid://dyuh3cybdmtyk" path="res://dev_workspaces/artemis/test_player.gd" id="1_goxvr"]
 [ext_resource type="Texture2D" uid="uid://c8ya0sik6kghv" path="res://characters/player/assets/MC_KnightBlob.png" id="1_vaqua"]
 [ext_resource type="PackedScene" uid="uid://bpyugc671abl0" path="res://components/hitbox.tscn" id="3_0j5v1"]
+[ext_resource type="PackedScene" uid="uid://dkru5vls84s76" path="res://dev_workspaces/djreprincess/player_attack.tscn" id="4_mkfer"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_goxvr"]
 size = Vector2(16, 16)
@@ -29,3 +30,5 @@ debug_color = Color(0.654902, 0.2509804, 0.5882353, 0.09411765)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_vaqua")
+
+[node name="playerAttack" parent="." instance=ExtResource("4_mkfer")]

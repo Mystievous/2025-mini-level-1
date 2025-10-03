@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://xgud1b0ea00y"]
+
+[ext_resource type="PackedScene" uid="uid://dkru5vls84s76" path="res://dev_workspaces/djreprincess/player_attack.tscn" id="1_7cldn"]
+[ext_resource type="Script" uid="uid://djjsr70v7ww02" path="res://dev_workspaces/djreprincess/test_stuff/test_scripts/test_player.gd" id="1_jcecn"]
+
+[node name="test_player" type="CharacterBody2D"]
+script = ExtResource("1_jcecn")
+
+[node name="playerAttack" parent="." instance=ExtResource("1_7cldn")]

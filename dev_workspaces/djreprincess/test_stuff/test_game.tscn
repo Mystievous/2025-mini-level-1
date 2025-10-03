@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1nbm4egb5xv5"]
+
+[ext_resource type="PackedScene" uid="uid://drebcau7s58qn" path="res://characters/enemies/jester/jester.tscn" id="1_bgmcx"]
+[ext_resource type="PackedScene" uid="uid://uy4q3a6obvh7" path="res://dev_workspaces/artemis/test_player.tscn" id="2_ndkhl"]
+
+[node name="test_game" type="Node2D"]
+
+[node name="Jester" parent="." instance=ExtResource("1_bgmcx")]
+position = Vector2(361, 182)
+
+[node name="TestPlayer" parent="." instance=ExtResource("2_ndkhl")]
+position = Vector2(135, 46)

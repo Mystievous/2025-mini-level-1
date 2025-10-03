@@ -7,6 +7,10 @@ extends Node2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../AnimatedSprite2D"
 @onready var animation_timer: Timer = $AnimationTimer
+@onready var jester: CharacterBody2D = $"../../Jester"
+@onready var hitbox: Hitbox = $Hitbox
+
+
 
 signal hit
 
@@ -30,17 +34,25 @@ func handle_right_attack(direction):
 	if direction == 0 or direction == 1:
 		if Input.is_action_just_pressed("attack"):
 			print("animation played")
-			animated_sprite_2d.stop()
-			animated_sprite_2d.play("Attack")
-			animation_timer.start()
+			#animated_sprite_2d.stop()
+			#animated_sprite_2d.play("Attack")
+			#animation_timer.start()
 			if ray_cast_right.is_colliding(): 
-				hit.emit()
+				#hit.emit()
+				var area := ray_cast_right.get_collider()
+				if area is Hitbox:
+					area.hurt(Statics.ColorType.RED)
+					#area.hurt(Statics.ColorType.BLUE)
+					#area.hurt(Statics.ColorType.GREEN)
 				print("hit with right attack")
 				
 func handle_left_attack(direction):
 	if direction == 0 or direction == -1:
 		if Input.is_action_just_pressed("attack"):
 			if ray_cast_left.is_colliding(): 
+				var area := ray_cast_left.get_collider()
+				if area is Hitbox:
+					area.hurt(Statics.ColorType.RED)
 				print("hit with left attack")
 				hit.emit()
 			
@@ -49,6 +61,9 @@ func handle_down_attack(direction):
 		if Input.is_action_just_pressed("attack"):
 			#animated_sprite_2d.play("Attack")
 			if ray_cast_down.is_colliding(): 
+				var area := ray_cast_down.get_collider()
+				if area is Hitbox:
+					area.hurt(Statics.ColorType.RED)
 				print("hit with down attack")
 				hit.emit()
 				
@@ -57,6 +72,9 @@ func handle_up_attack(direction):
 		if Input.is_action_just_pressed("attack"):
 			#animated_sprite_2d.play("Attack")
 			if ray_cast_up.is_colliding(): 
+				var area := ray_cast_up.get_collider()
+				if area is Hitbox:
+					area.hurt(Statics.ColorType.RED)
 				print("hit with up attack")
 				hit.emit()
 
