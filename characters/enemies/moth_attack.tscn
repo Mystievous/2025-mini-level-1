@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfka2ldpmu4yf"]
+
+[ext_resource type="SpriteFrames" uid="uid://18kkouw36bsk" path="res://assets/effects/attack/slash.tres" id="1_mi4ja"]
+[ext_resource type="Script" uid="uid://0letdb8x8di3" path="res://characters/enemies/attack.gd" id="2_nxoqn"]
+
+[node name="TreeAttack" type="AnimatedSprite2D"]
+modulate = Color(0, 0.4240458, 0.92144805, 1)
+z_index = 30
+z_as_relative = false
+sprite_frames = ExtResource("1_mi4ja")
+autoplay = "default"
+frame = 2
+frame_progress = 0.20860137
+script = ExtResource("2_nxoqn")
