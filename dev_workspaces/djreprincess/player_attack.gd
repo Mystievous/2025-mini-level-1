@@ -41,9 +41,7 @@ func handle_right_attack(direction):
 				#hit.emit()
 				var area := ray_cast_right.get_collider()
 				if area is Hitbox:
-					area.hurt(Statics.ColorType.RED)
-					#area.hurt(Statics.ColorType.BLUE)
-					#area.hurt(Statics.ColorType.GREEN)
+					hurt_all_enemies(area)
 				print("hit with right attack")
 				
 func handle_left_attack(direction):
@@ -52,7 +50,7 @@ func handle_left_attack(direction):
 			if ray_cast_left.is_colliding(): 
 				var area := ray_cast_left.get_collider()
 				if area is Hitbox:
-					area.hurt(Statics.ColorType.RED)
+					hurt_all_enemies(area)
 				print("hit with left attack")
 				hit.emit()
 			
@@ -63,7 +61,7 @@ func handle_down_attack(direction):
 			if ray_cast_down.is_colliding(): 
 				var area := ray_cast_down.get_collider()
 				if area is Hitbox:
-					area.hurt(Statics.ColorType.RED)
+					hurt_all_enemies(area)
 				print("hit with down attack")
 				hit.emit()
 				
@@ -74,9 +72,14 @@ func handle_up_attack(direction):
 			if ray_cast_up.is_colliding(): 
 				var area := ray_cast_up.get_collider()
 				if area is Hitbox:
-					area.hurt(Statics.ColorType.RED)
+					hurt_all_enemies(area)
 				print("hit with up attack")
 				hit.emit()
+				
+func hurt_all_enemies(area):
+	area.hurt(Statics.ColorType.RED)
+	area.hurt(Statics.ColorType.BLUE)
+	area.hurt(Statics.ColorType.GREEN)
 
 func _on_animation_timer_timeout() -> void:
 	animated_sprite_2d.stop()
