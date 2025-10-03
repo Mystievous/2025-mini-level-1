@@ -6,7 +6,16 @@
 [node name="Spawner" type="Marker2D"]
 script = ExtResource("1_yp5lu")
 
-[node name="DebugVisual" type="Sprite2D" parent="."]
-self_modulate = Color(0.303233, 0.303233, 0.303233, 1)
-scale = Vector2(0.125, 0.125)
+[node name="DebugVisuals" type="Node2D" parent="."]
+visible = false
+
+[node name="SpawnerRange" type="Sprite2D" parent="DebugVisuals"]
+self_modulate = Color(3.8147569, 3.8147569, 3.8147569, 0.39215687)
+scale = Vector2(0.015624999, 0.015624999)
+texture = ExtResource("2_ik2nu")
+
+[node name="SpawnerPosition" type="Sprite2D" parent="DebugVisuals"]
+self_modulate = Color(0.33395082, 0.33395082, 0.33395082, 1)
+position = Vector2(-1.1920929e-07, 1.1920929e-07)
+scale = Vector2(0.062499996, 0.062499996)
 texture = ExtResource("2_ik2nu")
