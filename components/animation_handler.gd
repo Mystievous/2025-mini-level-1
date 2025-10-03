@@ -25,8 +25,6 @@ func _physics_process(_delta: float) -> void:
 
 func _check_animation() -> void:	
 	var move_angle := parent.velocity.angle()
-	
-	print("Move Angle: ", move_angle)
 
 	if parent.velocity.is_zero_approx():
 		if pause_when_idle:

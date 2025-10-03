@@ -38,6 +38,7 @@ sprite_frames = ExtResource("2_w6iwb")
 animation = &"walk_down"
 
 [node name="EnemyBehavior" parent="." node_paths=PackedStringArray("player_detection_area") instance=ExtResource("3_ek5n7")]
+radius = 20.0
 avoidance_layers = 4
 avoidance_mask = 4
 player_detection_area = NodePath("../DetectionArea")

@@ -42,6 +42,7 @@ animation = &"walk_down"
 speed_scale = 1.5
 
 [node name="EnemyBehavior" parent="." node_paths=PackedStringArray("player_detection_area") instance=ExtResource("3_kyeje")]
+radius = 30.0
 player_detection_area = NodePath("../DetectionArea")
 speed_multiplier = 0.6
 
