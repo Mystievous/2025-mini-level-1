@@ -1,0 +1,173 @@
+[gd_scene load_steps=13 format=3 uid="uid://mibci3wgk2bn"]
+
+[ext_resource type="Texture2D" uid="uid://hp1fhiai4bpv" path="res://dev_workspaces/bernard/assets/ML1_Floors-Sheet.png" id="1_ilsv3"]
+[ext_resource type="Texture2D" uid="uid://djm5wg47if1t1" path="res://dev_workspaces/bernard/assets/ML1_Walls.png" id="2_rmex0"]
+[ext_resource type="Texture2D" uid="uid://c25ijc04dv3ne" path="res://levels/Main_Menu/Assets/MC_Red.png" id="3_ilsv3"]
+[ext_resource type="Script" uid="uid://cn675hn2ola46" path="res://dev_workspaces/bernard/UI_Overlay/character_body_2d.gd" id="3_rmex0"]
+[ext_resource type="FontFile" uid="uid://jttr5e0x0jj" path="res://levels/Main_Menu/Assets/Righteous.ttf" id="5_p38dd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmex0"]
+atlas = ExtResource("3_ilsv3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p38dd"]
+atlas = ExtResource("3_ilsv3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4vx3"]
+atlas = ExtResource("3_ilsv3")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_askic"]
+atlas = ExtResource("3_ilsv3")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bn1e8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmex0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p38dd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4vx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_askic")
+}],
+"loop": true,
+"name": &"walkDown",
+"speed": 3.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p4vx3"]
+bg_color = Color(0.7058824, 0, 0.2, 0.29411766)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p38dd"]
+bg_color = Color(0.7058824, 0, 0.2, 0.29411766)
+
+[node name="ExampleLevel" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Area2D"]
+offset_top = -499.0
+offset_right = 500.0
+offset_bottom = 1.0
+pivot_offset = Vector2(2, 0)
+texture = ExtResource("1_ilsv3")
+expand_mode = 1
+stretch_mode = 1
+flip_h = true
+
+[node name="TextureRect2" type="TextureRect" parent="Area2D"]
+offset_left = -129.0
+offset_top = -627.0
+offset_right = 373.6667
+offset_bottom = -541.6666
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_rmex0")
+stretch_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="Area2D"]
+offset_left = -129.0
+offset_right = 204.33301
+offset_bottom = 85.0
+rotation = 4.712389
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_rmex0")
+stretch_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="Area2D"]
+offset_left = 626.0
+offset_top = -499.0
+offset_right = 957.732
+offset_bottom = -414.0
+rotation = 1.5707964
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_rmex0")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("3_rmex0")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(259, -258)
+scale = Vector2(1.5, 1.459)
+sprite_frames = SubResource("SpriteFrames_bn1e8")
+animation = &"walkDown"
+
+[node name="CharacterCamera" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(259, -258)
+zoom = Vector2(4, 4)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Controls" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 35.0
+offset_top = 904.0
+offset_right = 530.0
+offset_bottom = 1063.0
+theme_override_fonts/normal_font = ExtResource("5_p38dd")
+bbcode_enabled = true
+text = "[font_size=15]    Character Controls
+W: Up
+A: Left
+S: Down
+D: Right
+(Insert Keystroke): Attack
+[/font_size]"
+
+[node name="ControlsBGPanel" type="Panel" parent="CanvasLayer"]
+z_index = -5
+offset_left = 25.0
+offset_top = 897.0
+offset_right = 529.0
+offset_bottom = 1063.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p4vx3")
+
+[node name="Progress" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -121.0
+offset_top = 33.0
+offset_right = 143.0
+offset_bottom = 73.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("5_p38dd")
+bbcode_enabled = true
+text = "[font_size=15]Progress:[/font_size]"
+
+[node name="ProgressBGPanel" type="Panel" parent="CanvasLayer"]
+z_index = -5
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -133.0
+offset_top = 17.0
+offset_right = 139.0
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p38dd")
+
+[node name="PlayerColor" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = 74.0
+offset_right = 91.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.4557587, 0, 0.11700445, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_p38dd")
+bbcode_enabled = true
+text = "[font_size=10][center]Red[/center][/font_size]"

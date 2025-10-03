@@ -1,9 +1,12 @@
-[gd_scene load_steps=23 format=3 uid="uid://7ajujdfleb5a"]
+[gd_scene load_steps=35 format=3 uid="uid://7ajujdfleb5a"]
 
 [ext_resource type="Script" uid="uid://bb10b8gom7cbe" path="res://levels/Main_Menu/main_menu.gd" id="1_rdje0"]
-[ext_resource type="Texture2D" uid="uid://djm5wg47if1t1" path="res://assets/tilemap/ML1_Walls.png" id="2_2wuca"]
+[ext_resource type="Texture2D" uid="uid://djm5wg47if1t1" path="res://dev_workspaces/bernard/assets/ML1_Walls.png" id="2_2wuca"]
+[ext_resource type="PackedScene" uid="uid://mibci3wgk2bn" path="res://dev_workspaces/bernard/UI_Overlay/Example Level.tscn" id="2_mmbmf"]
 [ext_resource type="FontFile" uid="uid://jttr5e0x0jj" path="res://levels/Main_Menu/Assets/Righteous.ttf" id="3_nxjpp"]
 [ext_resource type="Texture2D" uid="uid://p2jl0s1xmpl5" path="res://levels/Main_Menu/Assets/Torch Animated.png" id="4_2wuca"]
+[ext_resource type="Texture2D" uid="uid://c25ijc04dv3ne" path="res://levels/Main_Menu/Assets/MC_Red.png" id="6_eif2k"]
+[ext_resource type="Script" uid="uid://k1q7xcieyq87" path="res://levels/Main_Menu/characterWalking.gd" id="7_epmre"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nxjpp"]
 atlas = ExtResource("4_2wuca")
@@ -133,6 +136,75 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_eif2k"]
+atlas = ExtResource("6_eif2k")
+region = Rect2(9, 100, 15, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epmre"]
+atlas = ExtResource("6_eif2k")
+region = Rect2(41, 100, 15, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16lup"]
+atlas = ExtResource("6_eif2k")
+region = Rect2(73, 100, 15, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3wu4"]
+atlas = ExtResource("6_eif2k")
+region = Rect2(105, 100, 15, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcbdn"]
+atlas = ExtResource("6_eif2k")
+region = Rect2(8, 36, 24, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2py2a"]
+atlas = ExtResource("6_eif2k")
+region = Rect2(40, 36, 24, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlubi"]
+atlas = ExtResource("6_eif2k")
+region = Rect2(72, 36, 24, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gn64j"]
+atlas = ExtResource("6_eif2k")
+region = Rect2(104, 36, 24, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_16lup"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eif2k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epmre")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16lup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3wu4")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcbdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2py2a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlubi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gn64j")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 3.0
+}]
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -141,6 +213,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rdje0")
+level_scene = ExtResource("2_mmbmf")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -10
@@ -178,23 +251,34 @@ horizontal_alignment = 1
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_nxjpp")
-text = "Start Game
-"
+text = "Venture Into The Dungeon"
 
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+[node name="TorchLeft" type="AnimatableBody2D" parent="."]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatableBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TorchLeft"]
 position = Vector2(348, 465)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_ql47c")
 autoplay = "default"
 frame_progress = 0.13470589
 
-[node name="AnimatableBody2D2" type="AnimatableBody2D" parent="."]
+[node name="TorchRight" type="AnimatableBody2D" parent="."]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatableBody2D2"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TorchRight"]
 position = Vector2(1549, 469)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_4nsio")
 autoplay = "default"
 frame_progress = 0.8186496
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(129, 977.99994)
+scale = Vector2(10.40625, 10.1875)
+sprite_frames = SubResource("SpriteFrames_16lup")
+animation = &"walk_right"
+autoplay = "walk_right"
+script = ExtResource("7_epmre")
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="start_game"]
