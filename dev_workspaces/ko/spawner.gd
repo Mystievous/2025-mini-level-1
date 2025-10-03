@@ -22,11 +22,13 @@ enum SpawnerTypeEnum {
 @export var numberOfWaves: int = 3
 ##Sets how many enemies are in a wave. Default: 5
 @export var amountOfEnemiesInWave: int = 5
-##Determines whether the sprite at the spawner's position, the spawn radious and debug text is shown. Default: false
+##Determines whether the sprite at the spawner's position, the spawn radious,  debug text is shown and if pressing spacebar will kill and enemy. Default: false
 @export var showDebugVisual: bool = false
 
 #keeps track of the current wave
 var currentWave: int = 0
+#keeps track of how many enemies are left in the wave.
+var enemiesLeftInWave: int = 0
 
 func _ready() -> void:
 	if showDebugVisual:
@@ -42,6 +44,9 @@ func _process(_delta: float) -> void:
 			for childrenCounter in self.get_children():
 				if (childrenCounter.get_index() > 0): #skips the first node because that one is the DebugVisual
 					self.get_child(childrenCounter.get_index()).queue_free()
+					enemiesLeftInWave = self.get_child_count()-2
+					print("Enemies Left in wave: ", enemiesLeftInWave)
+					return
 
 #do the next wave if all enemies are defeated and currentWave < numberOfWaves
 func waves() -> void:
