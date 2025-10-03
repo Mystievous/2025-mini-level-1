@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4vnrp5c1hfy7"]
+[gd_scene load_steps=2 format=3 uid="uid://dkru5vls84s76"]
 
-[ext_resource type="Script" uid="uid://5l5iixmd5pcd" path="res://_Scripts/player_attack.gd" id="1_rc6xn"]
+[ext_resource type="Script" uid="uid://5l5iixmd5pcd" path="res://dev_workspaces/djreprincess/player_attack.gd" id="1_rc6xn"]
 
 [node name="playerAttack" type="Node2D"]
 scale = Vector2(1.8, 1.8)
